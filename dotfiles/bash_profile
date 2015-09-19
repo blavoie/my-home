@@ -1,0 +1,48 @@
+# .bash_profile
+
+echo "* .bash_profile: beginning"
+
+# Get the aliases and functions
+
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+###################################################################################################
+# User specific environment and startup programs
+###################################################################################################
+
+echo "* .bash_profile: user specific environment and startup programs"
+
+### Adding user personnal bin directories to path
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH
+
+### JetBrains PyCharm JDK
+
+PYCHARM_JDK=/opt/jdk8
+export PYCHARM_JDK
+
+### JetBrains IntelliJ IDEA JDK
+
+IDEA_JDK=/opt/jdk8
+export IDEA_JDK
+
+### JetBrains CLion JDK
+
+CL_JDK=/opt/jdk8
+export CL_JDK
+
+### JetBrains WebStorm JDK
+
+WEBIDE_JDK=/opt/jdk8
+export WEBIDE_JDK
+
+
+### Oracle Environment
+
+. ~/bin/env-oracle-common
+. ~/bin/env-oracle-instantclient
+#. ~/bin/env-oracle-client
+

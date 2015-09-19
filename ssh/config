@@ -1,0 +1,48 @@
+Host localhost 127.0.0.1 0.0.0.0
+    Hostname localhost
+    IdentityFile ~/.ssh/loopback.id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+Host lab1
+    Hostname laptop.ul.brunol.com
+    Port 22
+    User oracle
+
+Host lab3
+    Hostname laptop.ul.brunol.com
+    Port 10022
+
+Host lab4
+    Hostname laptop.ul.brunol.com
+    Port 11022
+
+Host raspi
+    Hostname home.brunol.com
+    Port 10022
+    User pi
+
+Host raspi-lan
+    Hostname raspi.lan.brunol.com
+    Port 22
+    User pi
+
+Host axiom-prv
+    Hostname axiom.prv.roam.brunol.com
+    User bl
+
+Host axiom-pub
+    Hostname axiom.pub.roam.brunol.com
+    User bl
+
+Host *.amazonaws.com *.aws
+    #IdentityFile ~/.ssh/brunol-aws-keypair.pem
+    User centos
+    CheckHostIP no
+    #StrictHostKeyChecking no
+    #UserKnownHostsFile=/dev/null
+    ForwardX11 no
+
+Host *
+    ForwardX11 yes 
+    #IdentityFile ~/.ssh/id_rsa
