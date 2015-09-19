@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Useful for quickly start NetBeans when using remote-X11 display.
+~/app/netbeans/bin/netbeans >/dev/null 2>&1 & 

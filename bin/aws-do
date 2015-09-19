@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# This sripts simply loop over my AWS nodes to execute a command. 
+# Host IPs must be in hosts file.
+#
+
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+YELLOW=$(tput setaf 3)
+
+for NODE  in node1.aws node2.aws node3.aws node4.aws node5.aws
+do
+    echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+    echo "${BOLD}-- Exécution de la commande demandée sur: ${YELLOW}$NODE${NORMAL}"
+    echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+    ssh -t $NODE $1
+    echo ""
+done

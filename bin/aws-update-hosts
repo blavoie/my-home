@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+#
+# This sripts simply loop over my AWS nodes to execute a command. 
+#
+
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+YELLOW=$(tput setaf 3)
+
+NODES=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text)
+
+# Show current hosts file
+
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo "${BOLD}-- Current ${YELLOW}/etc/hosts${NORMAL}${BOLD} file"
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo ""
+cat /etc/hosts
+echo ""
+
+# Suppress old /etc/hosts entries, and empty lines
+
+sudo sed -i '/node[0-9]\.aws/d' /etc/hosts
+sudo sed -i '/^\s*$/d' /etc/hosts
+
+# Empty temporary hosts file 
+
+echo "" > /tmp/hosts
+
+# Show list of resolved IP addresses
+
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo "${BOLD}-- Retrieving public IP addresses and associated hostname with AWSCLI${NORMAL}"
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo ""
+echo "${BOLD}Found: ${YELLOW}$NODES${NORMAL}"
+echo ""
+
+# Add new entries to temporary file
+
+for NODE  in $NODES
+do
+    ssh -q -x -i ~/.ssh/brunol-aws-keypair.pem -t \
+        -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
+        centos@$NODE \
+        'echo $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) $(hostname -s).aws | grep node' >> /tmp/hosts
+done
+
+# Print and add to /etc/hosts
+
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo "${BOLD}-- List of detected nodes${NORMAL}"
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo ""
+cat /tmp/hosts
+echo ""
+
+# Print new /etc/hosts file
+
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo "${BOLD}-- New ${YELLOW}/etc/hosts${NORMAL}${BOLD} file"
+echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+echo ""
+sudo sh -c "cat /tmp/hosts >> /etc/hosts"
+cat /etc/hosts
+echo ""
+
+# Cleanup
+
+rm /tmp/hosts

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# This file contains various configuration variables.
+#
+FREEDNS_PUBID=
+FREEDNS_PRVID=
+
+UL_MOUNT_BASE=/mnt/ul
+
+AWS_ACCESS_KEY=
+AWS_SECRET_KEY=

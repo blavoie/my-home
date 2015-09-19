@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+TNS_ADMIN=~/dev/oracle-tns
+export TNS_ADMIN
+
+NLS_LANG=ENGLISH_CANADA.AL32UTF8
+export NLS_LANG
+
+NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'
+export NLS_DATE_FORMAT
+
+

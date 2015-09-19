@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+ANACONDA_HOME=~/app/anaconda
+export ANACONDA_HOME
+
+PATH=$ANACONDA_HOME/bin:$PATH
+export PATH

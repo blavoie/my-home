@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#
+# Add this crontab entry:
+# 2,7,12,17,22,27,32,37,42,47,52,57 * * * * sleep 53 ; ~/bin/freedns-update >> /tmp/freedns-update.log 2>&1 &
+
+#########################################
+# Load configs from private file.
+# For options, see configs.template file.
+#########################################
+
+. ~/bin/configs
+
+###########################
+# General separator + Date
+###########################
+
+echo "******************************************************************"
+/usr/bin/date
+
+##################
+# PRIVATE ROAMING
+##################
+
+PRV_IP=$(/usr/sbin/ip route get 8.8.8.8 | /usr/bin/awk '/8.8.8.8/ {print $7}')
+echo "Got private (LAN) IP: $PRV_IP"
+
+/usr/bin/curl -s "http://freedns.afraid.org/dynamic/update.php?$FREEDNS_PRV_ID&address=$PRV_IP" &
+
+#################
+# PUBLIC ROAMING
+#################
+
+PUB_IP=$(/usr/bin/dig +short myip.opendns.com @resolver1.opendns.com)
+echo "Got public IP: $PUB_IP"
+
+/usr/bin/curl -s "http://freedns.afraid.org/dynamic/update.php?$FREEDNS_PUB_ID&address=$PUB_IP" &

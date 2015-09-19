@@ -1,0 +1,6 @@
+#shortname,longname,fqdn,freedns
+node1,node1.aws,node1.aws.brunol.com,
+node2,node2.aws,node2.aws.brunol.com,
+node3,node3.aws,node3.aws.brunol.com,
+node4,node4.aws,node4.aws.brunol.com,
+node5,node5.aws,node5.aws.brunol.com,

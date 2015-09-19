@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# This file if for setting the environment when using Oracle Database Full Client installation.
+#
+
+ORACLE_BASE=/u01/app/oracle
+export ORACLE_BASE
+
+ORACLE_HOME=$ORACLE_BASE/product/12.1.0/client_1
+export ORACLE_HOME
+
+PATH=$ORACLE_HOME/bin:$PATH
+export PATH
+
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib:$CLASSPATH
+export CLASSPATH
+
+OCI_LIB=$ORACLE_HOME/lib
+export OCI_LIB
+
+OCI_INC=$ORACLE_HOME/rdbms/public
+export OCI_INC
+
+
