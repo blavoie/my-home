@@ -39,6 +39,10 @@ export CL_JDK
 WEBIDE_JDK=/opt/jdk8
 export WEBIDE_JDK
 
+### JetBrains RubyMine JDK
+
+RUBYMINE_JDK=/opt/jdk8
+export RUBYMINE_JDK
 
 ### Oracle Environment
 
