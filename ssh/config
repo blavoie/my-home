@@ -46,6 +46,7 @@ Host *.amazonaws.com *.aws
 Host *.cl01 *.cl01.ulaval.ca 
     CheckHostIP no
     ForwardX11 no
+    IdentitiesOnly yes
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts.cl01.ulaval.ca
 
