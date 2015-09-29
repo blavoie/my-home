@@ -43,6 +43,12 @@ Host *.amazonaws.com *.aws
     #UserKnownHostsFile=/dev/null
     ForwardX11 no
 
+Host *.cl01 *.cl01.ulaval.ca 
+    CheckHostIP no
+    ForwardX11 no
+    StrictHostKeyChecking no
+    UserKnownHostsFile ~/.ssh/known_hosts.cl01.ulaval.ca
+
 Host *
     ForwardX11 yes 
     #IdentityFile ~/.ssh/id_rsa
