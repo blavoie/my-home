@@ -44,6 +44,7 @@ Host *.amazonaws.com *.aws
     ForwardX11 no
 
 Host *.cl01 *.cl01.ulaval.ca 
+    User root
     CheckHostIP no
     ForwardX11 no
     IdentitiesOnly yes
