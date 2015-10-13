@@ -12,6 +12,7 @@ Host lab1
 Host lab3
     Hostname laptop.ul.brunol.com
     Port 10022
+    ForwardX11 yes
 
 Host lab4
     Hostname laptop.ul.brunol.com
@@ -35,22 +36,12 @@ Host axiom-pub
     Hostname axiom.pub.roam.brunol.com
     User bl
 
-Host *.amazonaws.com *.aws
-    #IdentityFile ~/.ssh/brunol-aws-keypair.pem
-    User centos
-    CheckHostIP no
-    #StrictHostKeyChecking no
-    #UserKnownHostsFile=/dev/null
-    ForwardX11 no
-
 Host *.cl01 *.cl01.ulaval.ca 
     User root
     CheckHostIP no
-    ForwardX11 no
     IdentitiesOnly yes
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts.cl01.ulaval.ca
 
 Host *
-    ForwardX11 yes 
-    #IdentityFile ~/.ssh/id_rsa
+    ForwardX11 no 
