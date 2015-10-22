@@ -1,3 +1,6 @@
+" Use color scheme
+colorscheme desert
+
 " Use mouse
 set mouse=a
 
