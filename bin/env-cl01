@@ -1,0 +1,14 @@
+JAVA_HOME=/usr/lib/jvm/java
+export JAVA_HOME
+
+HADOOP_HOME=$HOME/app/hadoop-2.7.1
+export HADOOP_HOME
+
+HADOOP_CONF_DIR=$HOME/cluster-hadoop/etc/hadoop
+export HADOOP_CONF_DIR
+
+SPARK_HOME=$HOME/app/spark-1.5.1-bin-hadoop2.6
+export SPARK_HOME
+
+PATH=$PATH:$HADOOP_HOME/bin:$SPARK_HOME/BIN
+export PATH
