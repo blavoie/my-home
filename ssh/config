@@ -43,5 +43,8 @@ Host *.cl01 *.cl01.ulaval.ca
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts.cl01.ulaval.ca
 
+Host *.ul.ca
+    User ul-a-brlav35
+
 Host *
     ForwardX11 no 
