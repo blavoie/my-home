@@ -54,6 +54,11 @@ export WEBIDE_JDK
 RUBYMINE_JDK=/opt/jdk8
 export RUBYMINE_JDK
 
+### JetBrains DataGrip JDK
+
+DATAGRIP_JDK=/opt/jdk8
+export DATAGRIP_JDK
+
 ### Gradle
 
 GRADLE_HOME=~/app/gradle
