@@ -26,6 +26,12 @@ alias aws.ips='aws ec2 describe-instances --query "Reservations[*].Instances[*].
 
 ### SSH Aliases
 
+alias ssh-rvl-pr-sys01="ssh -X ul-rvl-pr-sys01.ul.ca"
+alias ssh-rvl-pr-sys02="ssh -X ul-rvl-pr-sys02.ul.ca"
+
+alias ssh-rvl-pr-pro01="ssh -X ul-rvl-pr-pro01.ul.ca"
+alias ssh-rvl-pr-pro02="ssh -X ul-rvl-pr-pro02.ul.ca"
+
 alias ssh-rvl-pr-red01="ssh -X ul-rvl-pr-red01.ul.ca"
 alias ssh-rvl-pr-red02="ssh -X ul-rvl-pr-red02.ul.ca"
 
