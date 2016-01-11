@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+#
+# This script automates de signing of the VirtualBox Kernel Driver for my laptop setup under UEFI.
+# It must be run after each kernel updates.
+#
+
+sudo /sbin/vboxconfig
+
+sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/private_key.priv \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/public_key.der \
+  $(modinfo -n vboxdrv)
+
+sudo modprobe vboxdrv

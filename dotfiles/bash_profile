@@ -14,10 +14,20 @@ fi
 
 echo "* .bash_profile: user specific environment and startup programs"
 
+### Adding «Dropbox home»
+
+DROPBOX_HOME=$HOME/Dropbox
+export DROPBOX_HOME
+
 ### Adding user personnal bin directories to path
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export PATH
+
+### System default JAVA HOME
+
+JAVA_HOME=/etc/alternatives/java_sdk
+export JAVA_HOME
 
 ### JetBrains PyCharm JDK
 
@@ -44,6 +54,19 @@ export WEBIDE_JDK
 RUBYMINE_JDK=/opt/jdk8
 export RUBYMINE_JDK
 
+### JetBrains DataGrip JDK
+
+DATAGRIP_JDK=/opt/jdk8
+export DATAGRIP_JDK
+
+### Gradle
+
+GRADLE_HOME=~/app/gradle
+export GRADLE_HOME
+
+PATH=$GRADLE_HOME/bin:$PATH
+export PATH
+
 ### Oracle Environment
 
 . ~/bin/env-oracle-common
@@ -52,5 +75,6 @@ export RUBYMINE_JDK
 
 
 ### Outils d'administration du Cluster Hadoop
-PATH=/usr/lib/oracle/12.1/client64/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/bl/.local/bin:/home/bl/bin:/home/bl/cluster-hadoop
+
+PATH=$PATH:/home/bl/cluster-hadoop
 export PATH
