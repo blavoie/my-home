@@ -18,6 +18,9 @@ Host lab4
     Hostname laptop.ul.brunol.com
     Port 11022
 
+Host lab5
+    Hostname labo-ena-05.vms.brunol.com
+
 Host raspi
     Hostname home.brunol.com
     Port 10022
