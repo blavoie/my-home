@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Oracle Data Modeler
+Exec=/home/bl/app/datamodeler/datamodeler.sh
+Type=Application
+Icon=/home/bl/app/datamodeler/icon.png
+Categories=Development;IDE;

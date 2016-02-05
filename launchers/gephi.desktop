@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gephi
+Comment=
+Exec=/home/bl/app/gephi/bin/gephi
+Icon=/home/bl/app/gephi/gephi.png
+Path=/home/bl
+Terminal=false
+StartupNotify=false

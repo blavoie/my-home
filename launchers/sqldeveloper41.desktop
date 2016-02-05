@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Oracle SQL Developer
+Exec=/home/bl/app/sqldeveloper/sqldeveloper.sh
+Type=Application
+Icon=/home/bl/app/sqldeveloper/icon.png
+Categories=Development;IDE;
