@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Java Mission Control (Oracle JDK 8)
+Exec=/opt/jdk8/bin/jmc
+Type=Application
+Icon=/opt/jdk8/lib/missioncontrol/icon.xpm
+Categories=Development;IDE;
+Name[en_CA.utf8]=Java Mission Control (Oracle JDK 8)

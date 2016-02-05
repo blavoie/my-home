@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Java VisualVM (standalone)
+Exec=/home/bl/app/visualvm/bin/visualvm
+Type=Application
+#Icon=/home/bl/app/visualvm/etc/visualvm.icns
+Icon=java-1.8.0
+Categories=Development;IDE;
+Name[en_CA.utf8]=Java VisualVM (standalone)

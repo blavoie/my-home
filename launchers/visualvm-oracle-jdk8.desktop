@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Java VisualVM (Oracle JDK8)
+Exec=/opt/jdk8/bin/jvisualvm
+Type=Application
+#Icon=/home/bl/my-home/lauchers/visualvm.png
+Icon=java-1.8.0
+Categories=Development;IDE;
+Name[en_CA.utf8]=Java VisualVM (Oracle JDK8)
