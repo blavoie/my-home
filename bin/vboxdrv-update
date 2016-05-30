@@ -5,7 +5,7 @@
 # It must be run after each kernel updates.
 #
 
-sudo /sbin/vboxconfig
+sudo /sbin/rcvboxdrv setup
 
 sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 \
   $DROPBOX_HOME/documents/technical/kernel.signing.keys/private_key.priv \
