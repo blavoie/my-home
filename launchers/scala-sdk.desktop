@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Eclipse JEE Luna SR2
+Exec=/home/bl/app/scala-sdk/eclipse
+Type=Application
+Icon=/home/bl/app/scala-sdk/icon.xpm
+Categories=Development;IDE;
+Name[en_CA.utf8]=Scala SDK
