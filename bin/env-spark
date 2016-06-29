@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SPARK_HOME=~/app/spark
+export SPARK_HOME
+
+PATH=$SPARK_HOME/bin:$PATH
+export PATH
+
+# Always prefer IPython
+
+export IPYTHON=1
+
+# Setup some aliases
+
+alias pyspark-notebook='IPYTHON_OPTS="notebook" pyspark'
+

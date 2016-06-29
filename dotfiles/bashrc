@@ -24,6 +24,9 @@ alias update-refresh="sudo dnf update --refresh -y"
 
 alias aws.ips='aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text'
 
+alias pretty-json='python -mjson.tool'
+alias pretty-json-color='python -mjson.tool | pygmentize -l json'
+
 ### SSH Aliases
 
 alias ssh-rvl-pr-sys01="ssh -X ul-rvl-pr-sys01.ul.ca"
