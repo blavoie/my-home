@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment=
 Terminal=false
-Name=Eclipse JEE Luna SR2
+Name=Eclipse
 Exec=/home/bl/app/eclipse/eclipse
 Type=Application
 Icon=/home/bl/app/eclipse/icon.xpm
