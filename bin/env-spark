@@ -11,9 +11,9 @@ export PATH
 
 # Always prefer IPython
 
-export IPYTHON=1
+export PYSPARK_DRIVER_PYTHON=ipython
 
 # Setup some aliases
 
-alias pyspark-notebook='IPYTHON_OPTS="notebook" pyspark'
+alias pyspark-notebook='PYSPARK_DRIVER_PYTHON_OPTS="notebook" pyspark'
 
