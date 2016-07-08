@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+SPARK_CONF_DIR=~/dev/my-home/configs/spark/ul-rvl
+export SPARK_CONF_DIR
+
