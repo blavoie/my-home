@@ -27,31 +27,6 @@ alias aws.ips='aws ec2 describe-instances --query "Reservations[*].Instances[*].
 alias pretty-json='python -mjson.tool'
 alias pretty-json-color='python -mjson.tool | pygmentize -l json'
 
-### SSH Aliases
-
-alias ssh-rvl-pr-sys01="ssh -X ul-rvl-pr-sys01.ul.ca"
-alias ssh-rvl-pr-sys02="ssh -X ul-rvl-pr-sys02.ul.ca"
-
-alias ssh-rvl-pr-pro01="ssh -X ul-rvl-pr-pro01.ul.ca"
-alias ssh-rvl-pr-pro02="ssh -X ul-rvl-pr-pro02.ul.ca"
-
-alias ssh-rvl-pr-red01="ssh -X ul-rvl-pr-red01.ul.ca"
-alias ssh-rvl-pr-red02="ssh -X ul-rvl-pr-red02.ul.ca"
-
-alias ssh-rvl-pr-log01="ssh -X ul-rvl-pr-log01.ul.ca"
-alias ssh-rvl-pr-log02="ssh -X ul-rvl-pr-log02.ul.ca"
-alias ssh-rvl-pr-log03="ssh -X ul-rvl-pr-log03.ul.ca"
-alias ssh-rvl-pr-log04="ssh -X ul-rvl-pr-log04.ul.ca"
-
-alias ssh-rvl-pr-ela01="ssh -X ul-rvl-pr-ela01.ul.ca"
-alias ssh-rvl-pr-ela02="ssh -X ul-rvl-pr-ela02.ul.ca"
-alias ssh-rvl-pr-ela03="ssh -X ul-rvl-pr-ela03.ul.ca"
-alias ssh-rvl-pr-ela04="ssh -X ul-rvl-pr-ela04.ul.ca"
-alias ssh-rvl-pr-ela05="ssh -X ul-rvl-pr-ela05.ul.ca"
-
-alias ssh-rvl-pr-kib01="ssh -X ul-rvl-pr-kib01.ul.ca"
-alias ssh-rvl-pr-kib02="ssh -X ul-rvl-pr-kib02.ul.ca"
-
 ### Color prompt
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
