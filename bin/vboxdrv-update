@@ -5,11 +5,29 @@
 # It must be run after each kernel updates.
 #
 
-sudo /sbin/rcvboxdrv setup
+#sudo /sbin/rcvboxdrv setup
 
 sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 \
   $DROPBOX_HOME/documents/technical/kernel.signing.keys/private_key.priv \
   $DROPBOX_HOME/documents/technical/kernel.signing.keys/public_key.der \
   $(modinfo -n vboxdrv)
 
-sudo modprobe vboxdrv
+sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/private_key.priv \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/public_key.der \
+  $(modinfo -n vboxpci)
+
+sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/private_key.priv \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/public_key.der \
+  $(modinfo -n vboxnetadp)
+
+sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/private_key.priv \
+  $DROPBOX_HOME/documents/technical/kernel.signing.keys/public_key.der \
+  $(modinfo -n vboxnetflt)
+
+# Load each files in /usr/lib/modules-load.d/VirtualBox.conf
+
+sudo systemctl start systemd-modules-load.service
+
