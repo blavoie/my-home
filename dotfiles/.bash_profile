@@ -12,6 +12,15 @@ fi
 
 umask 0007
 
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+
+for file in ~/.{bash_prompt,aliases,functions,path,dockerfunctions,extra,exports}; do
+	[[ -r "$file" ]] && [[ -f "$file" ]] && source "$file"
+done
+unset file
+
 ###################################################################################################
 # User specific environment and startup programs
 ###################################################################################################
@@ -76,7 +85,6 @@ export PATH
 . ~/bin/env-oracle-common
 . ~/bin/env-oracle-instantclient
 #. ~/bin/env-oracle-client
-
 
 ### Outils d'administration du Cluster Hadoop
 
