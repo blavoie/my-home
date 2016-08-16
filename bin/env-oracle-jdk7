@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+JAVA_HOME=/opt/jdk7
+export JAVA_HOME
+
+PATH=$JAVA_HOME/bin:$PATH
+export PATH
+
