@@ -2,8 +2,8 @@
 #
 # This file contains various configuration variables.
 #
-FREEDNS_PUBID=
-FREEDNS_PRVID=
+FREEDNS_PUB_ID=
+FREEDNS_PRV_ID=
 
 UL_MOUNT_BASE=/mnt/ul
 

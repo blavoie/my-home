@@ -71,6 +71,17 @@ export GRADLE_HOME
 PATH=$GRADLE_HOME/bin:$PATH
 export PATH
 
+### GOLANG
+
+GOPATH=~/dev/go
+export GOPATH
+
+GOBIN=$GOPATH/bin/
+export GOBIN
+
+PATH=$PATH:$GOBIN
+export PATH
+
 ### Oracle Environment
 
 . ~/bin/env-oracle-common

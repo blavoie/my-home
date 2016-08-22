@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+SCALA_HOME=~/app/scala-2.10
+export SCALA_HOME
+
+PATH=$SCALA_HOME/bin:$PATH
+export PATH
+

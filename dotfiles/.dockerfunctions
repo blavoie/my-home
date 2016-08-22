@@ -35,7 +35,7 @@ relies_on(){
 	done
 }
 
-# get container IPS
+# get container IP addresses
 
 docker-ip() {
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
@@ -66,7 +66,7 @@ nginx_config(){
 	proxy_set_header X-Forwarded-Port \$server_port;
 	proxy_set_header X-Request-Start \$msec;}
 	}
-	EOF
+EOF
 
 	# restart nginx
 	docker restart nginx
@@ -82,12 +82,27 @@ nginx_config(){
 # Container Aliases
 #
 
-ul-vpn() {
-    del_stopped ul-vpn
+openconnect() {
+	del_stopped openconnect
 
-    docker run --rm -it \
-        -v /tmp/.X11-unix:/tmp/.X11-unix \
-        --env=DISPLAY \
-        --privileged \
-        blavoie/openconnect
+	docker run --rm -it \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY \
+		--privileged \
+		--name openconnect \
+		${DOCKER_REPO_PREFIX}/openconnect
 }
+
+tor-proxy(){
+	del_stopped tor-proxy
+
+	docker run -d \
+		--restart always \
+		-v /etc/localtime:/etc/localtime:ro \
+		-p 9050:9050 \
+		--name tor-proxy \
+		${DOCKER_REPO_PREFIX}/tor-proxy
+
+	sudo hostess add tor-proxy $(docker inspect --format "{{.NetworkSettings.Networks.bridge.IPAddress}}" tor-proxy)
+}
+

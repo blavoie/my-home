@@ -17,6 +17,9 @@
 echo "******************************************************************"
 /usr/bin/date
 
+# Useful for debug purposes
+#echo "FreeDNS IDs (PRV, PUB): $FREEDNS_PRV_ID, $FREEDNS_PUB_ID"
+
 ##################
 # PRIVATE ROAMING
 ##################
