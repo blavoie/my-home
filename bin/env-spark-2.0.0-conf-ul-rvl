@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+. env-spark-2.0.0
+. env-spark-conf-ul-rvl
+

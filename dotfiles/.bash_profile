@@ -88,6 +88,10 @@ export PATH
 . ~/bin/env-oracle-instantclient
 #. ~/bin/env-oracle-client
 
+### Python environment to Anaconda by default
+
+. env-anaconda
+
 ### Outils d'administration du Cluster Hadoop
 
 PATH=$PATH:/home/bl/cluster-hadoop
