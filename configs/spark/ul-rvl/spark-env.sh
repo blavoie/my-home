@@ -70,5 +70,6 @@
 
 # Dynamic access from VPN.
 # Needs package moreutils to easily parse interface ip.
+
 SPARK_LOCAL_IP=$(ifdata -pa vpn0)
 
