@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=DBeaver
+Exec=/home/bl/app/dbeaver/dbeaver
+Type=Application
+Icon=/home/bl/app/dbeaver/icon.xpm
+Categories=Development;IDE;

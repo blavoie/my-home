@@ -1,1 +1,1 @@
-Can be installed under ~/.local/shared/applications
+Can be installed under ~/.local/share/applications
