@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TNS_ADMIN=~/dev/oracle-tns
+TNS_ADMIN=~/dev/my-home/configs/oracle/tns/ul
 export TNS_ADMIN
 
 NLS_LANG=ENGLISH_CANADA.AL32UTF8

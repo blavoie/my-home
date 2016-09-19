@@ -7,29 +7,27 @@
 
 ### S'assurer que les répertoires de montage sont existants.
 
-sudo mkdir -p $UL_MOUNT_BASE/ena-prod_logs
-sudo mkdir -p $UL_MOUNT_BASE/ena-server-prod0{1,2,3,4,5}-{a,b}_logs
+# Logs Server
 
-### Effectuer le montage des partages.
-# TODO: dynamiser avec une boucle et une liste de partages à monter.
+sudo mkdir -p $UL_MOUNT_BASE/ul-ora-pr-log01/
 
-# Log Server
+sudo mount.cifs //ul-ora-pr-log01.ul.ca/ena-prod_logs /mnt/ul/ul-ora-pr-log01/ena-prod_logs -o credentials=~/bin/credentials.ul
 
-sudo mount.cifs //ul-ora-pr-log01.ul.ca/ena-prod_logs /mnt/ul/ena-prod_logs/ -o credentials=~/bin/credentials.ul
+# Live Shares - ENA
 
-# Live Shares
+sudo mkdir -p $UL_MOUNT_BASE/ul-ena-pr-wls{01,02,03,04,05}/depot_journal
 
-sudo mount.cifs //ul-ena-pr-wls01.ul.ca/ena-server-prod01-a_logs $UL_MOUNT_BASE/ena-server-prod01-a_logs -o credentials=~/bin/credentials.ul
-sudo mount.cifs //ul-ena-pr-wls01.ul.ca/ena-server-prod01-b_logs $UL_MOUNT_BASE/ena-server-prod01-b_logs -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-ena-pr-wls01.ul.ca/depot_journal $UL_MOUNT_BASE/ul-ena-pr-wls01/depot_journal -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-ena-pr-wls02.ul.ca/depot_journal $UL_MOUNT_BASE/ul-ena-pr-wls02/depot_journal -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-ena-pr-wls03.ul.ca/depot_journal $UL_MOUNT_BASE/ul-ena-pr-wls03/depot_journal -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-ena-pr-wls04.ul.ca/depot_journal $UL_MOUNT_BASE/ul-ena-pr-wls04/depot_journal -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-ena-pr-wls05.ul.ca/depot_journal $UL_MOUNT_BASE/ul-ena-pr-wls05/depot_journal -o credentials=~/bin/credentials.ul
 
-sudo mount.cifs //ul-ena-pr-wls02.ul.ca/ena-server-prod02-a_logs $UL_MOUNT_BASE/ena-server-prod02-a_logs -o credentials=~/bin/credentials.ul
-sudo mount.cifs //ul-ena-pr-wls02.ul.ca/ena-server-prod02-b_logs $UL_MOUNT_BASE/ena-server-prod02-b_logs -o credentials=~/bin/credentials.ul
+# Live Shares - MPO
 
-sudo mount.cifs //ul-ena-pr-wls03.ul.ca/ena-server-prod03-a_logs $UL_MOUNT_BASE/ena-server-prod03-a_logs -o credentials=~/bin/credentials.ul
-sudo mount.cifs //ul-ena-pr-wls03.ul.ca/ena-server-prod03-b_logs $UL_MOUNT_BASE/ena-server-prod03-b_logs -o credentials=~/bin/credentials.ul
+sudo mkdir -p $UL_MOUNT_BASE/ul-mpo-pr-wls{01,02,03,04}/depot_journal
 
-sudo mount.cifs //ul-ena-pr-wls04.ul.ca/ena-server-prod04-a_logs $UL_MOUNT_BASE/ena-server-prod04-a_logs -o credentials=~/bin/credentials.ul
-sudo mount.cifs //ul-ena-pr-wls04.ul.ca/ena-server-prod04-b_logs $UL_MOUNT_BASE/ena-server-prod04-b_logs -o credentials=~/bin/credentials.ul
-
-sudo mount.cifs //ul-ena-pr-wls05.ul.ca/ena-server-prod05-a_logs $UL_MOUNT_BASE/ena-server-prod05-a_logs -o credentials=~/bin/credentials.ul
-sudo mount.cifs //ul-ena-pr-wls05.ul.ca/ena-server-prod05-b_logs $UL_MOUNT_BASE/ena-server-prod05-b_logs -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-mpo-pr-wls01.ul.ca/depot_journal $UL_MOUNT_BASE/ul-mpo-pr-wls01/depot_journal -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-mpo-pr-wls02.ul.ca/depot_journal $UL_MOUNT_BASE/ul-mpo-pr-wls02/depot_journal -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-mpo-pr-wls03.ul.ca/depot_journal $UL_MOUNT_BASE/ul-mpo-pr-wls03/depot_journal -o credentials=~/bin/credentials.ul
+sudo mount.cifs //ul-mpo-pr-wls04.ul.ca/depot_journal $UL_MOUNT_BASE/ul-mpo-pr-wls04/depot_journal -o credentials=~/bin/credentials.ul
