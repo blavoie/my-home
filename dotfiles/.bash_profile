@@ -1,6 +1,6 @@
 # .bash_profile
 
-echo "* .bash_profile: beginning"
+#echo "* .bash_profile: beginning"
 
 # Get the aliases and functions
 
@@ -12,20 +12,18 @@ fi
 
 umask 0007
 
-
-
 ###################################################################################################
 # User specific environment and startup programs
 ###################################################################################################
 
-echo "* .bash_profile: user specific environment and startup programs"
+#echo "* .bash_profile: user specific environment and startup programs"
 
 ### SSH Agent Stuff
 # Taken from: http://stackoverflow.com/questions/18880024/start-ssh-agent-on-login
 
 SSH_ENV="$HOME/.ssh/environment"
 
-function start_agent {
+function _ssh-start-agent {
     echo "Initialising new SSH agent..."
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
     echo succeeded
@@ -36,15 +34,16 @@ function start_agent {
 
 # Source SSH settings, if applicable
 
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    #ps ${SSH_AGENT_PID} doesn't work under cywgin
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
-fi
+function ssh-enable-agent {
+    if [ -f "${SSH_ENV}" ]; then
+        . "${SSH_ENV}" > /dev/null
+        ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+            _ssh-start-agent;
+        }
+    else
+        _ssh-start-agent;
+    fi
+}
 
 ### Adding «Dropbox home»
 
@@ -118,7 +117,7 @@ export PATH
 
 ### Python environment to Anaconda by default
 
-. env-anaconda
+#. env-anaconda
 
 ### Outils d'administration du Cluster Hadoop
 

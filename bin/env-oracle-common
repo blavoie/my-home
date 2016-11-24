@@ -9,4 +9,18 @@ export NLS_LANG
 NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'
 export NLS_DATE_FORMAT
 
+SQLPATH=~/dev/oracle-scripts
+export SQLPATH
+
+# Wrap some programs with rlwrap if it exists
+
+hash rlwrap &>/dev/null
+if [ $? -eq 0 ]; then
+
+    alias sqlplus='rlwrap sqlplus'
+    alias rman='rlwrap rman'
+    alias adrci='rlwrap adrci'
+
+fi
+
 

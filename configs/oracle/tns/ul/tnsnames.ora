@@ -1,0 +1,13 @@
+ENLABO01=
+  (DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=TCP)
+      (HOST=laptop.ul.brunol.com)
+      (PORT=1521)
+    )
+    (CONNECT_DATA=
+      (SERVER=dedicated)
+      (SERVICE_NAME=enlabo01.brunol.com)
+    )
+  )
+

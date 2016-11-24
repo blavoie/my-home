@@ -1,6 +1,6 @@
 # .bashrc
 
-echo "* .bashrc: beginning"
+#echo "* .bashrc: beginning"
 
 # Source global definitions
 
@@ -31,7 +31,7 @@ xhost SI:localuser:root >/dev/null 2>&1
 # User specific aliases and functions
 ###################################################################################################
 
-echo "* .bashrc: user specific aliases and functions"
+#echo "* .bashrc: user specific aliases and functions"
 
 ### User aliases
 

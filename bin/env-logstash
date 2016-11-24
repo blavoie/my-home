@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+LOGSTASH_HOME=~/app/logstash
+export LOGSTASH_HOME
+
+PATH=$LOGSTASH_HOME/bin:$PATH
+export PATH
