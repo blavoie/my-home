@@ -31,13 +31,19 @@ Host raspi-lan
     Port 22
     User pi
 
-Host axiom-prv
+Host axiom-prv axiom.prv axiom.prv.roam axiom.prv.roam.brunol.com
     Hostname axiom.prv.roam.brunol.com
     User bl
+    CheckHostIP no
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
 
-Host axiom-pub
+Host axiom-pub axiom.pub axiom.pub.roam axiom.pub.roam.brunol.com
     Hostname axiom.pub.roam.brunol.com
     User bl
+    CheckHostIP no
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
 
 Host *.cl01 *.cl01.ulaval.ca 
     User root
