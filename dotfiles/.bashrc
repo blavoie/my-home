@@ -12,7 +12,7 @@ fi
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 
-for file in ~/.{bash_prompt,aliases,functions,path,dockerfunctions,extra,exports}; do
+for file in ~/.{bash_prompt,aliases,tools,functions,path,dockerfunctions,extra,exports,ul}; do
     [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file"
 done
 unset file
@@ -28,7 +28,7 @@ unset file
 xhost SI:localuser:root >/dev/null 2>&1
 
 ###################################################################################################
-# User specific aliases and functions
+# User Specific Aliases and Functions
 ###################################################################################################
 
 #echo "* .bashrc: user specific aliases and functions"
