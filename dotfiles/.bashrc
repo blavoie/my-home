@@ -43,6 +43,9 @@ alias aws.ips='aws ec2 describe-instances --query "Reservations[*].Instances[*].
 alias pretty-json='python -mjson.tool'
 alias pretty-json-color='python -mjson.tool | pygmentize -l json'
 
+# Original command: for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less
+
+alias swapped-processes='for file in /proc/*/status ; do awk '"'"'/VmSwap|Name/{printf $2 " " $3}END{ print ""}'"'"' $file; done | sort -k 2 -n -r | less'
 
 ### Powerline
 
