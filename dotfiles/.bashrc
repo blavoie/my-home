@@ -12,7 +12,7 @@ fi
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 
-for file in ~/.{bash_prompt,aliases,functions,path,dockerfunctions,extra,exports}; do
+for file in ~/.{bash_prompt,aliases,tools,functions,path,dockerfunctions,extra,exports,ul}; do
     [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file"
 done
 unset file
@@ -28,7 +28,7 @@ unset file
 xhost SI:localuser:root >/dev/null 2>&1
 
 ###################################################################################################
-# User specific aliases and functions
+# User Specific Aliases and Functions
 ###################################################################################################
 
 #echo "* .bashrc: user specific aliases and functions"
@@ -43,6 +43,9 @@ alias aws.ips='aws ec2 describe-instances --query "Reservations[*].Instances[*].
 alias pretty-json='python -mjson.tool'
 alias pretty-json-color='python -mjson.tool | pygmentize -l json'
 
+# Original command: for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less
+
+alias swapped-processes='for file in /proc/*/status ; do awk '"'"'/VmSwap|Name/{printf $2 " " $3}END{ print ""}'"'"' $file; done | sort -k 2 -n -r | less'
 
 ### Powerline
 

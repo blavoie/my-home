@@ -1,0 +1,49 @@
+###################################################################################################
+# UL Specific Aliases and Functions
+###################################################################################################
+
+#### access logs
+
+# ena-pr
+
+alias ul-ena-pr-wls01a-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls01/depot_journal/ena-prod/ena-server-prod01-a/ena/acces.log | cut -c -100"
+alias ul-ena-pr-wls01b-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls01/depot_journal/ena-prod/ena-server-prod01-b/ena/acces.log | cut -c -100"
+
+alias ul-ena-pr-wls02a-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls02/depot_journal/ena-prod/ena-server-prod02-a/ena/acces.log | cut -c -100"
+alias ul-ena-pr-wls02b-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls02/depot_journal/ena-prod/ena-server-prod02-b/ena/acces.log | cut -c -100"
+
+alias ul-ena-pr-wls03a-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls03/depot_journal/ena-prod/ena-server-prod03-a/ena/acces.log | cut -c -100"
+alias ul-ena-pr-wls03b-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls03/depot_journal/ena-prod/ena-server-prod03-b/ena/acces.log | cut -c -100"
+
+alias ul-ena-pr-wls04a-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls04/depot_journal/ena-prod/ena-server-prod04-a/ena/acces.log | cut -c -100"
+alias ul-ena-pr-wls04b-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls04/depot_journal/ena-prod/ena-server-prod04-b/ena/acces.log | cut -c -100"
+
+alias ul-ena-pr-wls05a-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls05/depot_journal/ena-prod/ena-server-prod05-a/ena/acces.log | cut -c -100"
+alias ul-ena-pr-wls05b-access="tail -n 10 -F /mnt/ul/ul-ena-pr-wls05/depot_journal/ena-prod/ena-server-prod05-b/ena/acces.log | cut -c -100"
+
+#### sjk ttop
+
+# ena-ap
+
+alias ul-ena-ap-wls01a-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-ap-wls01.ul.ca:7091"
+alias ul-ena-ap-wls01b-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-ap-wls01.ul.ca:7092"
+
+alias ul-ena-ap-wls02a-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-ap-wls02.ul.ca:7091"
+alias ul-ena-ap-wls02b-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-ap-wls02.ul.ca:7092"
+
+# ena-pr
+
+alias ul-ena-pr-wls01a-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls01.ul.ca:7091"
+alias ul-ena-pr-wls01b-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls01.ul.ca:7092"
+
+alias ul-ena-pr-wls02a-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls02.ul.ca:7091"
+alias ul-ena-pr-wls02b-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls02.ul.ca:7092"
+
+alias ul-ena-pr-wls03a-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls03.ul.ca:7091"
+alias ul-ena-pr-wls03b-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls03.ul.ca:7092"
+
+alias ul-ena-pr-wls04a-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls04.ul.ca:7091"
+alias ul-ena-pr-wls04b-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls04.ul.ca:7092"
+
+alias ul-ena-pr-wls05a-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls05.ul.ca:7091"
+alias ul-ena-pr-wls05b-sjk-ttop="java -jar ~/bin/sjk-plus-0.4.2.jar ttop -n 20 -o ALLOC -s ul-ena-pr-wls05.ul.ca:7092"
