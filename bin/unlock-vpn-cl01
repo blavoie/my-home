@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-
 #
 # ipset must exists:
 #
 #   firewall-cmd --permanent --new-ipset=acces-vpn --type=hash:ip
 #   firewall-cmd --permanent --zone=trusted --add-source=ipset:acces-vpn
 #   firewall-cmd --reload
+#
+# Package needed for ifdata tool:
+#   sudo dnf install -y moreutils
 #
 
 nodes=("n01.cl01" "n02.cl01" "n03.cl01" "n04.cl01" "n05.cl01")
