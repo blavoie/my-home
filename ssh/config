@@ -27,7 +27,7 @@ Host raspi
     User pi
 
 Host raspi-lan
-    Hostname raspi.lan.brunol.com
+    Hostname raspberrypi.lan.brunol.com
     Port 22
     User pi
 
