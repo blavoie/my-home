@@ -2,7 +2,7 @@
 Comment=
 Terminal=false
 Name=iPython QT Console
-Exec=ipython qtconsole --colors=Linux
+Exec=ipython qtconsole
 Type=Application
 Icon=/usr/lib/python2.7/site-packages/IPython/qt/console/resources/icon/IPythonConsole.svg
 Categories=Development;IDE;
