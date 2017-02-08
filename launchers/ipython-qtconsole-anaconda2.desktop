@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=iPython QT Console - Anaconda 2
+Exec=. env-anaconda2; ipython qtconsole --colors=Linux
+Type=Application
+Icon=/usr/lib/python2.7/site-packages/IPython/qt/console/resources/icon/IPythonConsole.svg
+Categories=Development;IDE;
