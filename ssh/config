@@ -23,13 +23,14 @@ Host lab5
 
 Host raspi
     Hostname home.brunol.com
-    Port 10022
+    Port 22
     User pi
 
 Host raspi-lan
     Hostname raspberrypi.lan.brunol.com
     Port 22
     User pi
+    DynamicForward 1080
 
 Host axiom-prv axiom.prv axiom.prv.roam axiom.prv.roam.brunol.com
     Hostname axiom.prv.roam.brunol.com

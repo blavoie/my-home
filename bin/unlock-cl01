@@ -11,9 +11,10 @@
 #
 
 nodes=("n01.cl01" "n02.cl01" "n03.cl01" "n04.cl01" "n05.cl01")
-myip=$(ifdata -pa vpn0)
 
-echo "*** My vpn0 IP is: $myip"
+#myip=$(ifdata -pa vpn0)
+#myip=$($SSH_CLIENT | awk '{print $1}')
+#echo "*** My vpn0 IP is: $myip"
 
 for node in "${nodes[@]}"
 do
@@ -26,6 +27,6 @@ do
     
     # Add new entries
     echo "* Add $myip to ipset..."
-    ssh -t root@$node "firewall-cmd --permanent --ipset=acces-vpn --add-entry=$myip && firewall-cmd --reload"
+    ssh -t root@$node "firewall-cmd --permanent --ipset=acces-vpn --add-entry=\$(echo \$SSH_CLIENT | awk '{print \$1}' ) && firewall-cmd --reload"
 done
 
