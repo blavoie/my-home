@@ -6,10 +6,6 @@ export SPARK_HOME
 PATH=$SPARK_HOME/bin:$PATH
 export PATH
 
-# Spark 2.0 relies on Scala 2.11 rather than 2.10
-
-. env-scala-2.11
-
 # IPYTHON and IPYTHON_OPTS are removed in Spark 2.0+. Remove these from the environment and set PYSPARK_DRIVER_PYTHON and PYSPARK_DRIVER_PYTHON_OPTS instead.
 
 PYSPARK_DRIVER_PYTHON=ipython
