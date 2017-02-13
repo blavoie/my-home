@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-SPARK_CONF_DIR=~/dev/my-home/configs/spark/local
-export SPARK_CONF_DIR
-
 SPARK_HOME=~/app/spark-2.0.0-bin-hadoop2.7
 export SPARK_HOME
 
