@@ -1,11 +1,1 @@
-#!/usr/bin/env bash
-
-JAVA_HOME=/opt/jdk8
-export JAVA_HOME
-
-HADOOP_HOME=~/app/hadoop
-export HADOOP_HOME
-
-PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
-export PATH
-
+env-hadoop-2.7.3
