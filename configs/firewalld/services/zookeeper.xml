@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Zookeeper</short>
+  <description>Zookeeper</description>
+  <port protocol="tcp" port="2181"/>
+</service>
