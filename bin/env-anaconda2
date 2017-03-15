@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ANACONDA_HOME=~/app/anaconda
+ANACONDA_HOME=~/app/anaconda2
 export ANACONDA_HOME
 
 PATH=$ANACONDA_HOME/bin:$PATH
