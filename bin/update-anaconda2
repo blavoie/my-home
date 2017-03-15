@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+. env-anaconda2
+
+conda update conda -y
+conda update anaconda -y
+conda clean --all -y
+

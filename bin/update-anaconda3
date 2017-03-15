@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. env-anaconda
+. env-anaconda3
 
 conda update conda -y
 conda update anaconda -y
