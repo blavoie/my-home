@@ -1,9 +1,14 @@
 
-ORACLE_JDK8_URL="http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.tar.gz"
+ORACLE_JDK8_TGZ_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz"
+ORACLE_JDK8_RPM_URL="http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm"
+
 SJK_PLUS_URL="https://bintray.com/artifact/download/aragozin/generic/sjk-plus-0.4.2.jar"
 
-ANACONDA2_URL="https://repo.continuum.io/archive/Anaconda2-4.3.0-Linux-x86_64.sh"
-ANACONDA3_URL="https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh"
+ANACONDA2_URL="https://repo.continuum.io/archive/Anaconda2-4.3.1-Linux-x86_64.sh"
+ANACONDA3_URL="https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh"
+
+MINICONDA2_URL="https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh"
+MINICONDA3_URL="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 
 CASSANDRA_30X_URL=""
 CASSANDRA_390_URL=""
@@ -12,7 +17,7 @@ DBEAVER_URL="http://dbeaver.jkiss.org/files/dbeaver-ee-latest-linux.gtk.x86_64.t
 ECLIPSE_URL="http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/neon/2/eclipse-jee-neon-2-linux-gtk-x86_64.tar.gz"
 NETBEANS_URL=""
 IDEA_URL=""
-PYCHARM_URL=""
+PYCHARM_URL="https://download.jetbrains.com/python/pycharm-professional-2017.1.2.tar.gz"
 
 SQLDEVELOPER_URL=""
 SQLDEVELOPER_DATAMODELER_URL=""
@@ -25,5 +30,88 @@ FILEBEAT_URL=""
 ELASTICSEARCH_URL=""
 LOGSTASH_URL=""
 
+function INSTALL_REQUIREMENTS {
+    sudo mkdir -p /opt/
+    mkdir -p ~/app/
+}
 
 #wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm
+
+#######################################################################################################################
+#######################################################################################################################
+############
+############    INSTALLATION FUNCTIONS
+############
+#######################################################################################################################
+#######################################################################################################################
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+YELLOW=$(tput setaf 3)
+
+function INSTALL_ORACLE_JDK8_SYS {
+    INSTALL_REQUIREMENTS
+
+    echo ${BOLD}*************************************************${NORMAL}
+    echo ${BOLD}*** Installing ORACLE JDK 8 /opt/jdk8 ${NORMAL}
+    echo ${BOLD}*************************************************${NORMAL}
+    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" -O /tmp/jdk8.tar.gz $ORACLE_JDK8_TGZ_URL
+    sudo tar -vxzf /tmp/jdk8.tar.gz --directory /opt/
+    sudo ln -s $(basename /opt/jdk1.8.*) /opt/jdk8
+    rm -rf /tmp/jdk8.tar.gz
+}
+
+function INSTALL_MINICONDA2_SYS {
+    INSTALL_REQUIREMENTS
+
+    echo ${BOLD}*************************************************${NORMAL}
+    echo ${BOLD}*** Installing MINICONDA 2 to /opt/miniconda2 ${NORMAL}
+    echo ${BOLD}*************************************************${NORMAL}
+    wget -O /tmp/conda.sh $MINICONDA2_URL
+    sudo /usr/bin/bash /tmp/conda.sh -b -p /opt/miniconda2 
+    sudo /opt/miniconda2/bin/conda update conda -y 
+    sudo /opt/miniconda2/bin/conda clean --all -y 
+    sudo chmod -R o+rX /opt/miniconda2
+    rm -rf /tmp/conda.sh
+}
+
+function INSTALL_MINICONDA3_SYS {
+    INSTALL_REQUIREMENTS
+
+    echo ${BOLD}*************************************************${NORMAL}
+    echo ${BOLD}*** Installing MINICONDA 3 to /opt/miniconda3 ${NORMAL}
+    echo ${BOLD}*************************************************${NORMAL}
+    wget -O /tmp/conda.sh $MINICONDA3_URL
+    sudo /usr/bin/bash /tmp/conda.sh -b -p /opt/miniconda3 
+    sudo /opt/miniconda3/bin/conda update conda -y
+    sudo /opt/miniconda3/bin/conda clean --all -y 
+    sudo chmod -R o+rX /opt/miniconda3
+    rm -rf /tmp/conda.sh
+}
+
+function INSTALL_ANACONDA2_SYS {
+    INSTALL_REQUIREMENTS
+
+    echo ${BOLD}*************************************************${NORMAL}
+    echo ${BOLD}*** Installing ANACONDA 2 to /opt/anaconda2 ${NORMAL}
+    echo ${BOLD}*************************************************${NORMAL}
+    wget -O /tmp/conda.sh $ANACONDA2_URL
+    sudo /usr/bin/bash /tmp/conda.sh -b -p /opt/anaconda2 
+    sudo /opt/anaconda2/bin/conda update conda -y 
+    sudo /opt/anaconda2/bin/conda clean --all -y 
+    sudo chmod -R o+rX /opt/anaconda2
+    rm -rf /tmp/conda.sh
+}
+
+function INSTALL_ANACONDA3_SYS {
+    INSTALL_REQUIREMENTS
+
+    echo ${BOLD}*************************************************${NORMAL}
+    echo ${BOLD}*** Installing ANACONDA 3 to /opt/anaconda3 ${NORMAL}
+    echo ${BOLD}*************************************************${NORMAL}
+    wget -O /tmp/conda.sh $ANACONDA3_URL
+    sudo /usr/bin/bash /tmp/conda.sh -b -p /opt/anaconda3 
+    sudo /opt/anaconda3/bin/conda update conda -y 
+    sudo /opt/anaconda3/bin/conda clean --all -y 
+    sudo chmod -R o+rX /opt/anaconda3
+    rm -rf /tmp/conda.sh
+}

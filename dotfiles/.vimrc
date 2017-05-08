@@ -22,8 +22,14 @@ set selectmode=mouse
 "set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%* 
 
 " Powerline
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
-"set laststatus=2
-"set t_Co=256
+" 
+" Also useful to install  powerline fonts: https://github.com/powerline/fonts
+"
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set laststatus=2
+set showtabline=2
+set noshowmode
+set t_Co=256
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14

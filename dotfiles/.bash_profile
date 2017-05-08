@@ -109,6 +109,14 @@ export GOBIN
 PATH=$PATH:$GOBIN
 export PATH
 
+### NodeJS
+
+mkdir -p ~/.npm-global
+npm config set prefix '~/.npm-global'
+  
+export PATH=~/.npm-global/bin:$PATH
+export NPM_CONFIG_PREFIX=~/.npm-global
+
 ### Oracle Environment
 
 . ~/bin/env-oracle-common

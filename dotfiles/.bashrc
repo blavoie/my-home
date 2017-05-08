@@ -12,7 +12,8 @@ fi
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 
-for file in ~/.{bash_prompt,aliases,tools,functions,path,dockerfunctions,extra,exports,ul}; do
+#for file in ~/.{bash_prompt,aliases,tools,functions,path,dockerfunctions,extra,exports,ul}; do
+for file in ~/.{aliases,tools,functions,path,dockerfunctions,extra,exports,ul}; do
     [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file"
 done
 unset file
@@ -49,9 +50,9 @@ alias swapped-processes='for file in /proc/*/status ; do awk '"'"'/VmSwap|Name/{
 
 ### Powerline
 
-#if [ -f `which powerline-daemon` ]; then
-#  powerline-daemon -q
-#  POWERLINE_BASH_CONTINUATION=1
-#  POWERLINE_BASH_SELECT=1
-#  . /usr/share/powerline/bash/powerline.sh
-#fi
+if command -v powerline-daemon > /dev/null; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/share/powerline/bash/powerline.sh
+fi
