@@ -22,6 +22,8 @@ PYCHARM_URL="https://download.jetbrains.com/python/pycharm-professional-2017.1.2
 SQLDEVELOPER_URL=""
 SQLDEVELOPER_DATAMODELER_URL=""
 
+ARCHI_URL="https://www.archimatetool.com/downloads/release/v4/Archi-Linux64-4.0.0-pr1.tar.gz"
+
 SCALA_210_URL=""
 SCALA_211_URL=""
 SCALA_IDE_URL=""

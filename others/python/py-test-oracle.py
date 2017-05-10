@@ -1,0 +1,10 @@
+import cx_Oracle
+
+ORA_USERNAME = '<USERNAME>'
+ORA_PASSWORD = '<PASSWORD>'
+ORA_HOST = 'HOST.YOUR.BUSINESS.COM'
+ORA_PORT = 1521
+ORA_SERVICE = 'SERVICE.YOUR.BUSINESS.COM'
+
+ORA_DSN = cx_Oracle.makedsn(host=ORA_HOST, port=ORA_PORT, service_name=ORA_SERVICE)
+ora = cx_Oracle.connect(user=ORA_USERNAME, password=ORA_PASSWORD, dsn=ORA_DSN)
