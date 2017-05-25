@@ -1,0 +1,49 @@
+
+###########################
+## Install kickstart
+###########################
+
+virt-install \
+    --connect qemu:///system \
+    --name test02 \
+    --memory 1024 \
+    --vcpus=2 \
+    --disk size=8,bus=virtio,cache=writeback \
+    --network=network:openstack \
+    --sound=none \
+    --os-type=linux \
+    --os-variant centos7.0 \
+    --memballoon virtio \
+    --cdrom /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
+    --
+    
+
+# Over network
+
+    --location http://centos.mirror.iweb.ca/7/os/x86_64/ \
+    --initrd-inject /home/bl/kickstart.cfg \
+    --extra-args "ks=file:/kickstart.cfg"
+
+# Only work as root
+
+    --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
+    --initrd-inject /home/bl/kickstart.cfg \
+    --extra-args "ks=file:/kickstart.cfg"
+  
+###########################  
+## List variants
+###########################
+
+osinfo-query os   
+
+###########################    
+## Notes    
+###########################
+
+-w bridge=br0,mac=52:54:00:00:00:01 \
+--disk path=/var/lib/libvirt/images/test.allgoodbits.org,size=48 \
+-l http://mirror.allgoodbits.org/pub/centos/6.0/os/x86_64 \
+--nographics \
+-x "ks=http://prime.allgoodbits.org/kickstart/c6-test.cfg ksdevice=eth0 \
+ip=10.19.0.253 netmask=255.255.252.0 \
+dns=10.15.1.90 gateway=10.19.0.1 console=ttyS0,115200"
