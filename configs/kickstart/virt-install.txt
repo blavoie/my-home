@@ -14,29 +14,54 @@ virt-install \
     --os-type=linux \
     --os-variant centos7.0 \
     --memballoon virtio \
-    --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso
+    --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
+    --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart-anaconda-example.cfg ip=dhcp"
     
+
+### Various
 
 # Without graphics
 
     --nographics \
 
-# Over network 1
+### Kickstart
+
+## REMOTE ISO
+
+# Option 1:
+#   - location over network
+#   - remote kickstart
     
     --location http://centos.mirror.iweb.ca/7/os/x86_64/ \
-    --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
+    --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
 
-# Over network 2
+# Option 2:
+#   - location over network
+#   - local kickstart
 
     --location http://centos.mirror.iweb.ca/7/os/x86_64/ \
-    --initrd-inject ./kickstart.cfg \
-    --extra-args "ks=file:/kickstart.cfg"
+    --initrd-inject ./kickstart-anaconda-example.cfg \
+    --extra-args "ks=file:/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
 
-# Only work as root
+## LOCAL ISO
+
+# Option 3:
+#   - location with local ISO (requires root)
+#   - remote kickstart
+
 
     --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
-    --initrd-inject ./kickstart.cfg \
-    --extra-args "ks=file:/kickstart.cfg"
+    --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"    
+    
+# Option 4:
+#    - location with local ISO (requires root)
+#    - local kickstart 
+
+    --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
+    --initrd-inject ./kickstart-anaconda-example.cfg \
+    --extra-args "ks=file:/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
+
+ 
   
 ###########################  
 ## List variants
