@@ -2,23 +2,50 @@
 ###########################
 ## Install kickstart
 ###########################
+
+cd /home/bl/my-home/configs/kickstart/
+
+. env-proxy
+
 sudo \
 virt-install \
     --connect qemu:///system \
     --name test \
-    --memory 1024 \
+    --memory memory=1024,maxmemory=4028 \
     --vcpus=2 \
     --disk size=8,bus=virtio,cache=writeback \
     --network=network:openstack \
     --sound=none \
     --os-type=linux \
     --os-variant centos7.0 \
-    --memballoon virtio \
-    --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
-    --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart-anaconda-example.cfg ip=dhcp"
-    
+    --location http://centos.mirror.iweb.ca/7/os/x86_64/ \
+    --initrd-inject ./kickstart.cfg \
+    --extra-args "ks=file:/kickstart.cfg ip=dhcp proxy='http://gateway:3128'"
 
 ### Various
+
+# ISOs locations
+
+/var/lib/libvirt/iso/CentOS-7-x86_64-NetInstall-1611.iso
+/var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso
+/var/lib/libvirt/iso/CentOS-7-x86_64-DVD-1611.iso
+
+# HTTP locations
+
+http://centos.mirror.iweb.ca/7/os/x86_64/
+
+# ks locations
+
+ks=/home/bl/my-home/configs/kickstart/kickstart.cfg
+ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart.cfg
+
+# baloon - by default on linux guests I think
+
+    --memballoon virtio \
+
+# install over proxy
+
+    --extra-args "proxy='http://gateway:3128'"
 
 # Without graphics
 
@@ -67,16 +94,6 @@ virt-install \
 ## List variants
 ###########################
 
-osinfo-query os   
+osinfo-query os 
 
-###########################    
-## Notes    
-###########################
 
--w bridge=br0,mac=52:54:00:00:00:01 \
---disk path=/var/lib/libvirt/images/test.allgoodbits.org,size=48 \
--l http://mirror.allgoodbits.org/pub/centos/6.0/os/x86_64 \
---nographics \
--x "ks=http://prime.allgoodbits.org/kickstart/c6-test.cfg ksdevice=eth0 \
-ip=10.19.0.253 netmask=255.255.252.0 \
-dns=10.15.1.90 gateway=10.19.0.1 console=ttyS0,115200"

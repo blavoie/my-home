@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+export PROXY=http://localhost:3128
+
+export HTTP_PROXY=$PROXY
+export HTTPS_PROXY=$PROXY
+export FTP_PROXY=$PROXY 
+
+export proxy=$PROXY
+export http_proxy=$PROXY
+export https_proxy=$PROXY
+export ftp_proxy=$PROXY
