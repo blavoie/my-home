@@ -39,4 +39,4 @@ export HADOOP_HOME=${HADOOP_HOME:-/usr/hdp/current/hadoop-client}
 export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-/usr/hdp/current/hadoop-client/conf}
 
 # The java implementation to use.
-export JAVA_HOME=/usr/jdk64/jdk1.8.0_77
+export JAVA_HOME=/usr/jdk64/jdk1.8.0_112

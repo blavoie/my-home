@@ -42,7 +42,7 @@
     
     <property>
       <name>hive.auto.convert.join.noconditionaltask.size</name>
-      <value>286331153</value>
+      <value>1145324612</value>
     </property>
     
     <property>
@@ -72,7 +72,7 @@
     
     <property>
       <name>hive.cluster.delegation.token.store.zookeeper.connectString</name>
-      <value>n04.cl01.ulaval.ca:2181,n05.cl01.ulaval.ca:2181,n03.cl01.ulaval.ca:2181</value>
+      <value>n03.cl01.ulaval.ca:2181,n04.cl01.ulaval.ca:2181,n05.cl01.ulaval.ca:2181</value>
     </property>
     
     <property>
@@ -142,7 +142,7 @@
     
     <property>
       <name>hive.enforce.bucketing</name>
-      <value>false</value>
+      <value>true</value>
     </property>
     
     <property>
@@ -422,7 +422,7 @@
     
     <property>
       <name>hive.metastore.uris</name>
-      <value>thrift://n01.cl01.ulaval.ca:9083</value>
+      <value>thrift://n02.cl01.ulaval.ca:9083</value>
     </property>
     
     <property>
@@ -667,7 +667,7 @@
     
     <property>
       <name>hive.tez.container.size</name>
-      <value>1024</value>
+      <value>4096</value>
     </property>
     
     <property>
@@ -777,7 +777,7 @@
     
     <property>
       <name>hive.zookeeper.quorum</name>
-      <value>n04.cl01.ulaval.ca:2181,n05.cl01.ulaval.ca:2181,n03.cl01.ulaval.ca:2181</value>
+      <value>n03.cl01.ulaval.ca:2181,n04.cl01.ulaval.ca:2181,n05.cl01.ulaval.ca:2181</value>
     </property>
     
     <property>
@@ -787,7 +787,7 @@
     
     <property>
       <name>javax.jdo.option.ConnectionURL</name>
-      <value>jdbc:mysql://n02.cl01.ulaval.ca/hive?createDatabaseIfNotExist=true</value>
+      <value>jdbc:mysql://n01.cl01.ulaval.ca/hive?createDatabaseIfNotExist=true</value>
     </property>
     
     <property>

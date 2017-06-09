@@ -7,7 +7,7 @@
     
     <property>
       <name>hadoop.registry.zk.quorum</name>
-      <value>n05.cl01.ulaval.ca:2181,n04.cl01.ulaval.ca:2181,n03.cl01.ulaval.ca:2181</value>
+      <value>n03.cl01.ulaval.ca:2181,n04.cl01.ulaval.ca:2181,n05.cl01.ulaval.ca:2181</value>
     </property>
     
     <property>
@@ -22,7 +22,12 @@
     
     <property>
       <name>yarn.application.classpath</name>
-      <value>$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*</value>
+      <value>/etc/hadoop/conf,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*</value>
+    </property>
+    
+    <property>
+      <name>yarn.client.failover-proxy-provider</name>
+      <value>org.apache.hadoop.yarn.client.RequestHedgingRMFailoverProxyProvider</value>
     </property>
     
     <property>
@@ -52,7 +57,12 @@
     
     <property>
       <name>yarn.log.server.url</name>
-      <value>http://n05.cl01.ulaval.ca:19888/jobhistory/logs</value>
+      <value>http://n02.cl01.ulaval.ca:19888/jobhistory/logs</value>
+    </property>
+    
+    <property>
+      <name>yarn.log.server.web-service.url</name>
+      <value>http://n01.cl01.ulaval.ca:8188/ws/v1/applicationhistory</value>
     </property>
     
     <property>
@@ -161,16 +171,6 @@
     </property>
     
     <property>
-      <name>yarn.nodemanager.linux-container-executor.cgroups.hierarchy</name>
-      <value>hadoop-yarn</value>
-    </property>
-    
-    <property>
-      <name>yarn.nodemanager.linux-container-executor.cgroups.mount</name>
-      <value>false</value>
-    </property>
-    
-    <property>
       <name>yarn.nodemanager.linux-container-executor.cgroups.strict-resource-usage</name>
       <value>false</value>
     </property>
@@ -181,13 +181,8 @@
     </property>
     
     <property>
-      <name>yarn.nodemanager.linux-container-executor.resources-handler.class</name>
-      <value>org.apache.hadoop.yarn.server.nodemanager.util.DefaultLCEResourcesHandler</value>
-    </property>
-    
-    <property>
       <name>yarn.nodemanager.local-dirs</name>
-      <value>/var/hadoop/yarn/local,/var/log/hadoop/yarn/local,/var/log/audit/hadoop/yarn/local</value>
+      <value>/hadoop/yarn/local</value>
     </property>
     
     <property>
@@ -202,7 +197,7 @@
     
     <property>
       <name>yarn.nodemanager.log-aggregation.num-log-files-per-app</name>
-      <value>30</value>
+      <value>336</value>
     </property>
     
     <property>
@@ -212,11 +207,11 @@
     
     <property>
       <name>yarn.nodemanager.log-dirs</name>
-      <value>/var/hadoop/yarn/log,/var/log/hadoop/yarn/log,/var/log/audit/hadoop/yarn/log</value>
+      <value>/hadoop/yarn/log</value>
     </property>
     
     <property>
-      <name>yarn.nodemanager.log.retain-second</name>
+      <name>yarn.nodemanager.log.retain-seconds</name>
       <value>604800</value>
     </property>
     
@@ -242,12 +237,12 @@
     
     <property>
       <name>yarn.nodemanager.resource.cpu-vcores</name>
-      <value>1</value>
+      <value>3</value>
     </property>
     
     <property>
       <name>yarn.nodemanager.resource.memory-mb</name>
-      <value>4096</value>
+      <value>12288</value>
     </property>
     
     <property>
@@ -267,12 +262,12 @@
     
     <property>
       <name>yarn.resourcemanager.address</name>
-      <value>n04.cl01.ulaval.ca:8050</value>
+      <value>n02.cl01.ulaval.ca:8050</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.admin.address</name>
-      <value>n04.cl01.ulaval.ca:8141</value>
+      <value>n02.cl01.ulaval.ca:8141</value>
     </property>
     
     <property>
@@ -292,12 +287,12 @@
     
     <property>
       <name>yarn.resourcemanager.connect.max-wait.ms</name>
-      <value>900000</value>
+      <value>-1</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.connect.retry-interval.ms</name>
-      <value>30000</value>
+      <value>15000</value>
     </property>
     
     <property>
@@ -327,17 +322,17 @@
     
     <property>
       <name>yarn.resourcemanager.hostname</name>
-      <value>n04.cl01.ulaval.ca</value>
+      <value>n02.cl01.ulaval.ca</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.hostname.rm1</name>
-      <value>n04.cl01.ulaval.ca</value>
+      <value>n02.cl01.ulaval.ca</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.hostname.rm2</name>
-      <value>n02.cl01.ulaval.ca</value>
+      <value>n05.cl01.ulaval.ca</value>
     </property>
     
     <property>
@@ -352,12 +347,12 @@
     
     <property>
       <name>yarn.resourcemanager.resource-tracker.address</name>
-      <value>n04.cl01.ulaval.ca:8025</value>
+      <value>n02.cl01.ulaval.ca:8025</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.scheduler.address</name>
-      <value>n04.cl01.ulaval.ca:8030</value>
+      <value>n02.cl01.ulaval.ca:8030</value>
     </property>
     
     <property>
@@ -392,17 +387,17 @@
     
     <property>
       <name>yarn.resourcemanager.webapp.address</name>
-      <value>n04.cl01.ulaval.ca:8088</value>
+      <value>n02.cl01.ulaval.ca:8088</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.address.rm1</name>
-      <value>n04.cl01.ulaval.ca:8088</value>
+      <value>n02.cl01.ulaval.ca:8088</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.address.rm2</name>
-      <value>n02.cl01.ulaval.ca:8088</value>
+      <value>n05.cl01.ulaval.ca:8088</value>
     </property>
     
     <property>
@@ -412,17 +407,17 @@
     
     <property>
       <name>yarn.resourcemanager.webapp.https.address</name>
-      <value>n04.cl01.ulaval.ca:8090</value>
+      <value>n02.cl01.ulaval.ca:8090</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.https.address.rm1</name>
-      <value>n04.cl01.ulaval.ca:8090</value>
+      <value>n02.cl01.ulaval.ca:8090</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.https.address.rm2</name>
-      <value>n02.cl01.ulaval.ca:8090</value>
+      <value>n05.cl01.ulaval.ca:8090</value>
     </property>
     
     <property>
@@ -442,7 +437,7 @@
     
     <property>
       <name>yarn.resourcemanager.zk-address</name>
-      <value>n04.cl01.ulaval.ca:2181,n03.cl01.ulaval.ca:2181,n05.cl01.ulaval.ca:2181</value>
+      <value>n05.cl01.ulaval.ca:2181,n04.cl01.ulaval.ca:2181,n03.cl01.ulaval.ca:2181</value>
     </property>
     
     <property>
@@ -466,13 +461,18 @@
     </property>
     
     <property>
+      <name>yarn.scheduler.capacity.ordering-policy.priority-utilization.underutilized-preemption.enabled</name>
+      <value>false</value>
+    </property>
+    
+    <property>
       <name>yarn.scheduler.maximum-allocation-mb</name>
-      <value>4096</value>
+      <value>12288</value>
     </property>
     
     <property>
       <name>yarn.scheduler.maximum-allocation-vcores</name>
-      <value>1</value>
+      <value>3</value>
     </property>
     
     <property>
@@ -487,12 +487,17 @@
     
     <property>
       <name>yarn.timeline-service.address</name>
-      <value>n04.cl01.ulaval.ca:10200</value>
+      <value>n01.cl01.ulaval.ca:10200</value>
     </property>
     
     <property>
       <name>yarn.timeline-service.bind-host</name>
       <value>0.0.0.0</value>
+    </property>
+    
+    <property>
+      <name>yarn.timeline-service.client.fd-flush-interval-secs</name>
+      <value>5</value>
     </property>
     
     <property>
@@ -513,6 +518,11 @@
     <property>
       <name>yarn.timeline-service.entity-group-fs-store.active-dir</name>
       <value>/ats/active/</value>
+    </property>
+    
+    <property>
+      <name>yarn.timeline-service.entity-group-fs-store.app-cache-size</name>
+      <value>10</value>
     </property>
     
     <property>
@@ -542,7 +552,7 @@
     
     <property>
       <name>yarn.timeline-service.entity-group-fs-store.scan-interval-seconds</name>
-      <value>60</value>
+      <value>15</value>
     </property>
     
     <property>
@@ -577,12 +587,12 @@
     
     <property>
       <name>yarn.timeline-service.leveldb-state-store.path</name>
-      <value>/var/hadoop/yarn/timeline</value>
+      <value>/hadoop/yarn/timeline</value>
     </property>
     
     <property>
       <name>yarn.timeline-service.leveldb-timeline-store.path</name>
-      <value>/var/hadoop/yarn/timeline</value>
+      <value>/hadoop/yarn/timeline</value>
     </property>
     
     <property>
@@ -637,12 +647,12 @@
     
     <property>
       <name>yarn.timeline-service.webapp.address</name>
-      <value>n04.cl01.ulaval.ca:8188</value>
+      <value>n01.cl01.ulaval.ca:8188</value>
     </property>
     
     <property>
       <name>yarn.timeline-service.webapp.https.address</name>
-      <value>n04.cl01.ulaval.ca:8190</value>
+      <value>n01.cl01.ulaval.ca:8190</value>
     </property>
     
   </configuration>

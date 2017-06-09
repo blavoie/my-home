@@ -16,7 +16,7 @@
     </property>
     
     <property>
-      <name>dfs.client.failover.proxy.provider.ulaval</name>
+      <name>dfs.client.failover.proxy.provider.experimentation</name>
       <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
     </property>
     
@@ -57,7 +57,7 @@
     
     <property>
       <name>dfs.datanode.data.dir</name>
-      <value>/data/hdfs/data</value>
+      <value>/hadoop/hdfs/data</value>
       <final>true</final>
     </property>
     
@@ -68,7 +68,7 @@
     
     <property>
       <name>dfs.datanode.du.reserved</name>
-      <value>2625447936</value>
+      <value>8835222016</value>
     </property>
     
     <property>
@@ -94,7 +94,7 @@
     
     <property>
       <name>dfs.datanode.max.transfer.threads</name>
-      <value>16384</value>
+      <value>4096</value>
     </property>
     
     <property>
@@ -118,7 +118,7 @@
     </property>
     
     <property>
-      <name>dfs.ha.namenodes.ulaval</name>
+      <name>dfs.ha.namenodes.experimentation</name>
       <value>nn1,nn2</value>
     </property>
     
@@ -144,7 +144,7 @@
     
     <property>
       <name>dfs.internal.nameservices</name>
-      <value>ulaval</value>
+      <value>experimentation</value>
     </property>
     
     <property>
@@ -184,7 +184,7 @@
     
     <property>
       <name>dfs.namenode.checkpoint.dir</name>
-      <value>/var/hadoop/hdfs/namesecondary</value>
+      <value>/hadoop/hdfs/namesecondary</value>
     </property>
     
     <property>
@@ -209,32 +209,32 @@
     
     <property>
       <name>dfs.namenode.handler.count</name>
-      <value>50</value>
+      <value>100</value>
     </property>
     
     <property>
-      <name>dfs.namenode.http-address.ulaval.nn1</name>
+      <name>dfs.namenode.http-address.experimentation.nn1</name>
       <value>n01.cl01.ulaval.ca:50070</value>
     </property>
     
     <property>
-      <name>dfs.namenode.http-address.ulaval.nn2</name>
+      <name>dfs.namenode.http-address.experimentation.nn2</name>
       <value>n02.cl01.ulaval.ca:50070</value>
     </property>
     
     <property>
-      <name>dfs.namenode.https-address.ulaval.nn1</name>
+      <name>dfs.namenode.https-address.experimentation.nn1</name>
       <value>n01.cl01.ulaval.ca:50470</value>
     </property>
     
     <property>
-      <name>dfs.namenode.https-address.ulaval.nn2</name>
+      <name>dfs.namenode.https-address.experimentation.nn2</name>
       <value>n02.cl01.ulaval.ca:50470</value>
     </property>
     
     <property>
       <name>dfs.namenode.name.dir</name>
-      <value>/data/hdfs/namenode</value>
+      <value>/hadoop/hdfs/namenode</value>
       <final>true</final>
     </property>
     
@@ -244,12 +244,12 @@
     </property>
     
     <property>
-      <name>dfs.namenode.rpc-address.ulaval.nn1</name>
+      <name>dfs.namenode.rpc-address.experimentation.nn1</name>
       <value>n01.cl01.ulaval.ca:8020</value>
     </property>
     
     <property>
-      <name>dfs.namenode.rpc-address.ulaval.nn2</name>
+      <name>dfs.namenode.rpc-address.experimentation.nn2</name>
       <value>n02.cl01.ulaval.ca:8020</value>
     </property>
     
@@ -260,7 +260,7 @@
     
     <property>
       <name>dfs.namenode.shared.edits.dir</name>
-      <value>qjournal://n03.cl01.ulaval.ca:8485;n04.cl01.ulaval.ca:8485;n05.cl01.ulaval.ca:8485/ulaval</value>
+      <value>qjournal://n04.cl01.ulaval.ca:8485;n03.cl01.ulaval.ca:8485;n05.cl01.ulaval.ca:8485/experimentation</value>
     </property>
     
     <property>
@@ -280,7 +280,7 @@
     
     <property>
       <name>dfs.nameservices</name>
-      <value>ulaval</value>
+      <value>experimentation</value>
     </property>
     
     <property>

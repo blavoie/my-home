@@ -2,7 +2,7 @@
     
     <property>
       <name>fs.defaultFS</name>
-      <value>hdfs://ulaval</value>
+      <value>hdfs://experimentation</value>
       <final>true</final>
     </property>
     
@@ -27,23 +27,13 @@
     </property>
     
     <property>
-      <name>hadoop.proxyuser.falcon.groups</name>
-      <value>*</value>
-    </property>
-    
-    <property>
-      <name>hadoop.proxyuser.falcon.hosts</name>
-      <value>*</value>
-    </property>
-    
-    <property>
       <name>hadoop.proxyuser.hcat.groups</name>
       <value>*</value>
     </property>
     
     <property>
       <name>hadoop.proxyuser.hcat.hosts</name>
-      <value>n02.cl01.ulaval.ca</value>
+      <value>n01.cl01.ulaval.ca</value>
     </property>
     
     <property>
@@ -63,7 +53,7 @@
     
     <property>
       <name>hadoop.proxyuser.hive.hosts</name>
-      <value>n02.cl01.ulaval.ca</value>
+      <value>n01.cl01.ulaval.ca</value>
     </property>
     
     <property>
@@ -98,7 +88,7 @@
     
     <property>
       <name>hadoop.proxyuser.yarn.hosts</name>
-      <value>n02.cl01.ulaval.ca,n04.cl01.ulaval.ca</value>
+      <value>n02.cl01.ulaval.ca,n05.cl01.ulaval.ca</value>
     </property>
     
     <property>

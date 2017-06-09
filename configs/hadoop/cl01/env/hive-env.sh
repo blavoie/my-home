@@ -11,12 +11,13 @@
       # The heap size of the jvm stared by hive shell script can be controlled via:
 
       if [ "$SERVICE" = "metastore" ]; then
-      export HADOOP_HEAPSIZE=977 # Setting for HiveMetastore
+      export HADOOP_HEAPSIZE=1985 # Setting for HiveMetastore
       else
       export HADOOP_HEAPSIZE=1024 # Setting for HiveServer2 and Client
       fi
 
       export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS  -Xmx${HADOOP_HEAPSIZE}m"
+      export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS"
 
       # Larger heap size may be required when running queries over large number of files or partitions.
       # By default hive shell scripts use a heap size of 256 (MB).  Larger heap size would also be
@@ -33,13 +34,13 @@
 
       # Folder containing extra libraries required for hive compilation/execution can be controlled by:
       if [ "${HIVE_AUX_JARS_PATH}" != "" ]; then
-      if [ -f "${HIVE_AUX_JARS_PATH}" ]; then
-      export HIVE_AUX_JARS_PATH=${HIVE_AUX_JARS_PATH}
+        if [ -f "${HIVE_AUX_JARS_PATH}" ]; then
+          export HIVE_AUX_JARS_PATH=${HIVE_AUX_JARS_PATH}
+        elif [ -d "/usr/hdp/current/hive-webhcat/share/hcatalog" ]; then
+          export HIVE_AUX_JARS_PATH=/usr/hdp/current/hive-webhcat/share/hcatalog/hive-hcatalog-core.jar
+        fi
       elif [ -d "/usr/hdp/current/hive-webhcat/share/hcatalog" ]; then
-      export HIVE_AUX_JARS_PATH=/usr/hdp/current/hive-webhcat/share/hcatalog/hive-hcatalog-core.jar
-      fi
-      elif [ -d "/usr/hdp/current/hive-webhcat/share/hcatalog" ]; then
-      export HIVE_AUX_JARS_PATH=/usr/hdp/current/hive-webhcat/share/hcatalog/hive-hcatalog-core.jar
+        export HIVE_AUX_JARS_PATH=/usr/hdp/current/hive-webhcat/share/hcatalog/hive-hcatalog-core.jar
       fi
 
       export METASTORE_PORT=9083

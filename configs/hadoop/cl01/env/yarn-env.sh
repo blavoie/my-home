@@ -3,7 +3,7 @@
       export YARN_LOG_DIR=/var/log/hadoop-yarn/$USER
       export YARN_PID_DIR=/var/run/hadoop-yarn/$USER
       export HADOOP_LIBEXEC_DIR=/usr/hdp/current/hadoop-client/libexec
-      export JAVA_HOME=/usr/jdk64/jdk1.8.0_77
+      export JAVA_HOME=/usr/jdk64/jdk1.8.0_112
       export JAVA_LIBRARY_PATH="${JAVA_LIBRARY_PATH}:/var/lib/ambari-server/data/tmp/hadoop_java_io_tmpdir"
 
       # We need to add the EWMA appender for the yarn daemons only;
@@ -121,3 +121,4 @@
       fi
       YARN_OPTS="$YARN_OPTS -Dyarn.policy.file=$YARN_POLICYFILE"
       YARN_OPTS="$YARN_OPTS -Djava.io.tmpdir=/var/lib/ambari-server/data/tmp/hadoop_java_io_tmpdir"
+      

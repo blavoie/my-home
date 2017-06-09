@@ -15,7 +15,7 @@
       # See the License for the specific language governing permissions and
       # limitations under the License.
 
-      JAVA_HOME=/usr/jdk64/jdk1.8.0_77
+      JAVA_HOME=/usr/jdk64/jdk1.8.0_112
       HCAT_PID_DIR=/var/run/webhcat/
       HCAT_LOG_DIR=/var/log/webhcat/
       HCAT_CONF_DIR=/usr/hdp/current/hive-webhcat/etc/hcatalog
