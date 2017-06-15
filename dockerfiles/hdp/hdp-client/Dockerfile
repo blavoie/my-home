@@ -58,7 +58,18 @@ RUN rm -rf /tmp/* \
  && yum clean all -y
 
 ##### Set running context
+# TODO: make stuff dynamic with an entrypoint.sh script.
+#   
+#   See: 
+#       https://github.com/nlesc-sherlock/hdfs-dfs-client-docker
+#       https://denibertovic.com/posts/handling-permissions-with-docker-volumes/
+#       https://wiki.dti.ulaval.ca/pages/editpage.action?pageId=64340440#
+#
 
+RUN mkdir /workdir
+WORKDIR /workdir
+
+ENV HADOOP_USER_NAME=hdfs   
 USER hdfs
 ENTRYPOINT ["hdfs"]
 
