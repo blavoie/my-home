@@ -70,6 +70,5 @@ RUN mkdir /workdir
 WORKDIR /workdir
 
 ENV HADOOP_USER_NAME=hdfs   
-USER hdfs
 ENTRYPOINT ["hdfs"]
 
