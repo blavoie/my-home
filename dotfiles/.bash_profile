@@ -117,6 +117,15 @@ npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH
 export NPM_CONFIG_PREFIX=~/.npm-global
 
+### HDFS Shell
+
+#HDFS_SHELL_HOME=~/app/hdfs-shell
+#export HDFS_SHELL_HOME
+#alias hdfs-shell='CLASSPATH=$HDFS_SHELL_HOME/lib bash $HDFS_SHELL_HOME/hdfs-shell.sh'
+
+#PATH=$HDFS_SHELL_HOME:$PATH
+#export PATH
+
 ### Oracle Environment
 
 . ~/bin/env-oracle-common

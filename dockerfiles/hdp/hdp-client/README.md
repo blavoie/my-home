@@ -1,3 +1,7 @@
+# hdp-client
+
+## How to build
+
 How to fetch all configs:
 ```
 export AMBARI_USER=admin
@@ -16,19 +20,46 @@ docker build -t hdp-client .
     
 ```
 
+## How to run 
+
+### Quickstart
+
 How to run, with hdfs as default entrypoint:
 ```
 docker run --rm -it hdp-client dfs -ls /
 ```
 
-Other way to map volumes and uid correctly:
+### Aliases
+
+Make aliases to make it possible to put/get files:
 ```
-alias hdp-client-bash='docker run --rm -it -u `id -u $USER` -v $(pwd):/workdir --entrypoint=bash hdp-client'
-alias hdp-client-hdfs='docker run --rm -it -u `id -u $USER` -v $(pwd):/workdir --entrypoint=hdfs hdp-client'
-alias hdp-client-yarn='docker run --rm -it -u `id -u $USER` -v $(pwd):/workdir --entrypoint=yarn hdp-client'
+alias hdp-client-bash='docker run --rm -it -v $(pwd):/workdir --entrypoint=bash hdp-client'
+alias hdp-client-hdfs='docker run --rm -it -v $(pwd):/workdir --entrypoint=hdfs hdp-client'
+alias hdp-client-yarn='docker run --rm -it -v $(pwd):/workdir --entrypoint=yarn hdp-client'
 ```
 
-This not work as expected now, as we'll need gosu in an entrypoint.sh script.
+If working with SELinux:
+```
+alias hdp-client-bash='docker run --rm -it -v $(pwd):/workdir:Z --entrypoint=bash hdp-client'
+alias hdp-client-hdfs='docker run --rm -it -v $(pwd):/workdir:Z --entrypoint=hdfs hdp-client'
+alias hdp-client-yarn='docker run --rm -it -v $(pwd):/workdir:Z --entrypoint=yarn hdp-client'
+```
+
+### Running with aliases
+
+Usage examples:
+```
+hdp-client-hdfs dfs -put source.txt /path/to/hdfs/
+hdp-client-hdfs dfs -get /path/to/hdfs/source /path/to/dest
+```
+
+## Limitations
+
+The container only see the current working directory on host, that means that we can't get/put files from anything else than current working directory on host.
+
+## TODO
+
+Good examples with gosu and correct uid mappings in an entrypoint.sh script.
 
 See:
 - https://github.com/nlesc-sherlock/hdfs-dfs-client-docker

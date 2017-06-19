@@ -1,0 +1,10 @@
+<pool type="rbd">
+  <name>libvirt-pool</name>
+  <source>
+    <name>libvirt-pool</name>
+    <host name='n01.cl01.ulaval.ca' />
+    <auth username='libvirt' type='ceph'>
+      <secret uuid='536a4be4-2929-40f6-8b49-eb31b94e6cd2' />
+    </auth>
+  </source>
+</pool>

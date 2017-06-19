@@ -32,12 +32,7 @@ FILEBEAT_URL=""
 ELASTICSEARCH_URL=""
 LOGSTASH_URL=""
 
-function INSTALL_REQUIREMENTS {
-    sudo mkdir -p /opt/
-    mkdir -p ~/app/
-}
-
-#wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm
+HDFS_SHELL_URL="https://github.com/avast/hdfs-shell/releases/download/v1.0.0/hdfs-shell-1.0.0.zip"
 
 #######################################################################################################################
 #######################################################################################################################
@@ -46,9 +41,17 @@ function INSTALL_REQUIREMENTS {
 ############
 #######################################################################################################################
 #######################################################################################################################
+
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 YELLOW=$(tput setaf 3)
+
+
+function INSTALL_REQUIREMENTS {
+    sudo mkdir -p /opt/
+    mkdir -p ~/app/
+}
+
 
 function INSTALL_ORACLE_JDK8_SYS {
     INSTALL_REQUIREMENTS
