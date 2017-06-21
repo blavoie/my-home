@@ -53,6 +53,18 @@ hdp-client-hdfs dfs -put source.txt /path/to/hdfs/
 hdp-client-hdfs dfs -get /path/to/hdfs/source /path/to/dest
 ```
 
+### Using local configs instead of what's packaged
+
+You just need to make a volume on /etc/hadoop/conf, you can also adjust your aliases accordingly:
+``` 
+docker run --rm -it -v $(pwd):/workdir -v /path/to/local/config:/etc/hadoop/config --entrypoint=yarn hdp-client
+```
+
+You can make it dynamic, but your $HADOOP_CONF_DIR environment variable needs to be set:
+```
+docker run --rm -it -v $(pwd):/workdir -v $HADOOP_CONF_DIR:/etc/hadoop/config --entrypoint=yarn hdp-client
+```
+
 ## Limitations
 
 The container only see the current working directory on host, that means that we can't get/put files from anything else than current working directory on host.
