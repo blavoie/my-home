@@ -40,17 +40,19 @@ RUN yum install -y hadoop-client \
                    hadooplzo-native
 
 #### Set configurations
+## 
+## Uncomment this section if you want to embed default configs into container.
+## If configs aren't there, the docker build will fail.
+## Also possible to override anyway using volume mapping.
+##
 
-COPY conf/*.tar.gz /tmp/
-
-RUN ls -lah /tmp
-
-RUN tar -vxzf /tmp/HDFS_CLIENT-configs.tar.gz       -C /etc/hadoop/conf \
- && tar -vxzf /tmp/YARN_CLIENT-configs.tar.gz       -C /etc/hadoop/conf \ 
- && tar -vxzf /tmp/MAPREDUCE2_CLIENT-configs.tar.gz -C /etc/hadoop/conf \
- && mkdir -p /etc/hadoop/conf/backup \
- && mv /etc/hadoop/conf/*.sh /etc/hadoop/conf/backup \
- && chmod -R go+rX /etc/hadoop 
+#COPY conf/*.tar.gz /tmp/
+#RUN tar -vxzf /tmp/HDFS_CLIENT-configs.tar.gz       -C /etc/hadoop/conf \
+# && tar -vxzf /tmp/YARN_CLIENT-configs.tar.gz       -C /etc/hadoop/conf \ 
+# && tar -vxzf /tmp/MAPREDUCE2_CLIENT-configs.tar.gz -C /etc/hadoop/conf \
+# && mkdir -p /etc/hadoop/conf/backup \
+# && mv /etc/hadoop/conf/*.sh /etc/hadoop/conf/backup \
+# && chmod -R go+rX /etc/hadoop 
 
 #### Cleanup
 

@@ -2,77 +2,97 @@
 
 ## How to build
 
-How to fetch all configs:
+``` 
+docker build -t hdp-client .
+```
+
+## How to run 
+
+### Prerequisites
+
+Cluster configs must be availlable on the host and $HADOOP_CONF_DIR environment variable defined.
+
+If using Ambari, you can get it using WebApp or REST APIs:
 ```
 export AMBARI_USER=admin
 export AMBARI_PASS=<password>
 export AMBARI_URL=http://<ambari-hostname>:8080
 
-curl -o conf/HDFS_CLIENT-configs.tar.gz       -u $AMBARI_USER:$AMBARI_PASS -X GET $AMBARI_URL/api/v1/clusters/experimentation/services/HDFS/components/HDFS_CLIENT?format=client_config_tar
-curl -o conf/YARN_CLIENT-configs.tar.gz       -u $AMBARI_USER:$AMBARI_PASS -X GET $AMBARI_URL/api/v1/clusters/experimentation/services/YARN/components/YARN_CLIENT?format=client_config_tar
-curl -o conf/MAPREDUCE2_CLIENT-configs.tar.gz -u $AMBARI_USER:$AMBARI_PASS -X GET $AMBARI_URL/api/v1/clusters/experimentation/services/MAPREDUCE2/components/MAPREDUCE2_CLIENT?format=client_config_tar
+curl -o HDFS_CLIENT-configs.tar.gz       -u $AMBARI_USER:$AMBARI_PASS -X GET $AMBARI_URL/api/v1/clusters/experimentation/services/HDFS/components/HDFS_CLIENT?format=client_config_tar
+curl -o YARN_CLIENT-configs.tar.gz       -u $AMBARI_USER:$AMBARI_PASS -X GET $AMBARI_URL/api/v1/clusters/experimentation/services/YARN/components/YARN_CLIENT?format=client_config_tar
+curl -o MAPREDUCE2_CLIENT-configs.tar.gz -u $AMBARI_USER:$AMBARI_PASS -X GET $AMBARI_URL/api/v1/clusters/experimentation/services/MAPREDUCE2/components/MAPREDUCE2_CLIENT?format=client_config_tar
 
+unset AMBARI_PASS
 ```
-
-How to build:
-``` 
-docker build -t hdp-client .
-    
-```
-
-## How to run 
 
 ### Quickstart
 
-How to run, with hdfs as default entrypoint:
+The minimal and simplest way to to run, with hdfs as default entrypoint:
 ```
-docker run --rm -it hdp-client dfs -ls /
-```
-
-### Aliases
-
-Make aliases to make it possible to put/get files:
-```
-alias hdp-client-bash='docker run --rm -it -v $(pwd):/workdir --entrypoint=bash hdp-client'
-alias hdp-client-hdfs='docker run --rm -it -v $(pwd):/workdir --entrypoint=hdfs hdp-client'
-alias hdp-client-yarn='docker run --rm -it -v $(pwd):/workdir --entrypoint=yarn hdp-client'
+docker run --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf hdp-client dfs -ls /
 ```
 
-If working with SELinux:
+### Defining aliases
+
+It's recommended to use aliases or functions to make it simpler:
 ```
-alias hdp-client-bash='docker run --rm -it -v $(pwd):/workdir:Z --entrypoint=bash hdp-client'
-alias hdp-client-hdfs='docker run --rm -it -v $(pwd):/workdir:Z --entrypoint=hdfs hdp-client'
-alias hdp-client-yarn='docker run --rm -it -v $(pwd):/workdir:Z --entrypoint=yarn hdp-client'
+alias hdp-client-bash='docker run --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf -v $(pwd):/workdir --entrypoint=bash hdp-client'
+alias hdp-client-hdfs='docker run --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf -v $(pwd):/workdir --entrypoint=hdfs hdp-client'
+alias hdp-client-yarn='docker run --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf -v $(pwd):/workdir --entrypoint=yarn hdp-client'
 ```
 
-### Running with aliases
+### Running using aliases
 
 Usage examples:
 ```
 hdp-client-hdfs dfs -put source.txt /path/to/hdfs/
-hdp-client-hdfs dfs -get /path/to/hdfs/source /path/to/dest
+hdp-client-hdfs dfs -get /path/to/hdfs/source.txt dest.txt
 ```
 
-### Using local configs instead of what's packaged
-
-You just need to make a volume on /etc/hadoop/conf, you can also adjust your aliases accordingly:
+### Totally contextualize the execution with current working directory
+```
+docker run -i -t --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf -v $(pwd):/workdir -v $(pwd):$(pwd) -w $(pwd) hdp-client dfs ls /
 ``` 
-docker run --rm -it -v $(pwd):/workdir -v /path/to/local/config:/etc/hadoop/config --entrypoint=yarn hdp-client
+
+### If hostnames not in DNS
+
+We cannot add hosts entries at build time, because they'll be overritten at runtime. 
+But, at runtime we can pass entries to add to /etc/hosts file.
+
+Example:
+```
+DOCKER_ADD_HOSTS='--add-host=node1.clustername.domain.tld:10.1.1.1 --add-host=node2.clustername.domain.tld:10.1.1.2 --add-host=node3.clustername.domain.tld:10.1.1.3'
+export DOCKER_ADD_HOSTS 
 ```
 
-You can make it dynamic, but your $HADOOP_CONF_DIR environment variable needs to be set:
+Then use it into docker run with less typing:
 ```
-docker run --rm -it -v $(pwd):/workdir -v $HADOOP_CONF_DIR:/etc/hadoop/config --entrypoint=yarn hdp-client
+docker run $DOCKER_ADD_HOSTS [...]
+```
+
+### Working with SELinux
+
+If working with SELinux, volumes are not usable from the container.
+
+It is possible to make it working by using z or Z flag when defining volumes.
+```
+docker run -v $(pwd):/workdir:Z  [...]
+```
+
+Behind the scenes, it makes some relabelling... But does it break something in the long run?
+And relabelling isn't working on all filesystems or mountpoints like CIFS. The workaround is to mount using good SELinux Contexts.
+
+Example:
+```
+//server/share /mnt/server/share  cifs rw,credentials=/etc/samba/credentials,context=system_u:object_r:container_file_t:s0 0 0
 ```
 
 ## Limitations
 
-The container only see the current working directory on host, that means that we can't get/put files from anything else than current working directory on host.
+The container only see the current working directory on host, that means that we can't get/put files from anything else than current working directory subtree.
 
-## TODO
-
+Accessing resources with good uid mappings between container and host?
 Good examples with gosu and correct uid mappings in an entrypoint.sh script.
-
 See:
 - https://github.com/nlesc-sherlock/hdfs-dfs-client-docker
 - https://denibertovic.com/posts/handling-permissions-with-docker-volumes/
