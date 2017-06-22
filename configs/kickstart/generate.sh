@@ -28,7 +28,7 @@ while read LINE; do
         --initrd-inject ./target/$NEWFILE \
         --extra-args "ks=file:/$NEWFILE ip=dhcp proxy='http://gateway:3128'" &
     
-    sleep 3
+    sleep 25
 
 done < generate.hosts.txt
 
