@@ -106,3 +106,12 @@ tor-proxy(){
 	sudo hostess add tor-proxy $(docker inspect --format "{{.NetworkSettings.Networks.bridge.IPAddress}}" tor-proxy)
 }
 
+
+DOCKER_ADD_HOSTS='--add-host=n01.cl01.ulaval.ca:132.203.123.89 --add-host=n02.cl01.ulaval.ca:132.203.123.87 --add-host=n03.cl01.ulaval.ca:132.203.123.98 --add-host=n04.cl01.ulaval.ca:132.203.123.94 --add-host=n05.cl01.ulaval.ca:132.203.123.76'
+export DOCKER_ADD_HOSTS
+ 
+alias hdp-client-bash='docker run $DOCKER_ADD_HOSTS --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf -v $(pwd):/workdir -v $(pwd):$(pwd) -w $(pwd) --entrypoint=bash hdp-client'
+alias hdp-client-hdfs='docker run $DOCKER_ADD_HOSTS --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf -v $(pwd):/workdir -v $(pwd):$(pwd) -w $(pwd) --entrypoint=hdfs hdp-client'
+alias hdp-client-yarn='docker run $DOCKER_ADD_HOSTS --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf -v $(pwd):/workdir -v $(pwd):$(pwd) -w $(pwd) --entrypoint=yarn hdp-client'
+
+
