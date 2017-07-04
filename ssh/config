@@ -14,6 +14,11 @@ Host lab3
     Port 10022
     ForwardX11 yes
 
+Host lab3.w
+    Hostname laptop.w.ul.brunol.com
+    Port 10022
+    ForwardX11 yes
+
 Host lab4
     Hostname laptop.ul.brunol.com
     Port 11022
@@ -46,7 +51,7 @@ Host axiom-pub axiom.pub axiom.pub.roam axiom.pub.roam.brunol.com
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 
-Host *.cl01 *.cl01.ulaval.ca 
+Host *.cl01 *.cl01.ulaval.ca ul-svd-ex-*.ul.ca
     User root
     CheckHostIP no
     IdentitiesOnly yes
