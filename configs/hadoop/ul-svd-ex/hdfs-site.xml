@@ -94,7 +94,7 @@
     
     <property>
       <name>dfs.datanode.max.transfer.threads</name>
-      <value>4096</value>
+      <value>16384</value>
     </property>
     
     <property>
@@ -214,22 +214,22 @@
     
     <property>
       <name>dfs.namenode.http-address.experimentation.nn1</name>
-      <value>n01.cl01.ulaval.ca:50070</value>
+      <value>ul-svd-ex-nod01.ul.ca:50070</value>
     </property>
     
     <property>
       <name>dfs.namenode.http-address.experimentation.nn2</name>
-      <value>n02.cl01.ulaval.ca:50070</value>
+      <value>ul-svd-ex-nod02.ul.ca:50070</value>
     </property>
     
     <property>
       <name>dfs.namenode.https-address.experimentation.nn1</name>
-      <value>n01.cl01.ulaval.ca:50470</value>
+      <value>ul-svd-ex-nod01.ul.ca:50470</value>
     </property>
     
     <property>
       <name>dfs.namenode.https-address.experimentation.nn2</name>
-      <value>n02.cl01.ulaval.ca:50470</value>
+      <value>ul-svd-ex-nod02.ul.ca:50470</value>
     </property>
     
     <property>
@@ -245,12 +245,12 @@
     
     <property>
       <name>dfs.namenode.rpc-address.experimentation.nn1</name>
-      <value>n01.cl01.ulaval.ca:8020</value>
+      <value>ul-svd-ex-nod01.ul.ca:8020</value>
     </property>
     
     <property>
       <name>dfs.namenode.rpc-address.experimentation.nn2</name>
-      <value>n02.cl01.ulaval.ca:8020</value>
+      <value>ul-svd-ex-nod02.ul.ca:8020</value>
     </property>
     
     <property>
@@ -260,7 +260,7 @@
     
     <property>
       <name>dfs.namenode.shared.edits.dir</name>
-      <value>qjournal://n04.cl01.ulaval.ca:8485;n03.cl01.ulaval.ca:8485;n05.cl01.ulaval.ca:8485/experimentation</value>
+      <value>qjournal://ul-svd-ex-nod03.ul.ca:8485;ul-svd-ex-nod04.ul.ca:8485;ul-svd-ex-nod01.ul.ca:8485/experimentation</value>
     </property>
     
     <property>
@@ -318,6 +318,11 @@
     <property>
       <name>fs.permissions.umask-mode</name>
       <value>022</value>
+    </property>
+    
+    <property>
+      <name>hadoop.caller.context.enabled</name>
+      <value>true</value>
     </property>
     
     <property>

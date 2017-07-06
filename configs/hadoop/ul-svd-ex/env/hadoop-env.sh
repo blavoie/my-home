@@ -106,7 +106,7 @@
       export HADOOP_LIBEXEC_DIR=/usr/hdp/current/hadoop-client/libexec
 
       # Mostly required for hadoop 2.0
-      export JAVA_LIBRARY_PATH=${JAVA_LIBRARY_PATH}:/usr/lib/hadoop/lib/native/Linux-amd64-64:/usr/hdp/current/hadoop-client/lib/native/Linux-amd64-64
+      export JAVA_LIBRARY_PATH=${JAVA_LIBRARY_PATH}:/usr/hdp/current/hadoop-client/lib/native/Linux-amd64-64
 
       export HADOOP_OPTS="-Dhdp.version=$HDP_VERSION $HADOOP_OPTS"
 

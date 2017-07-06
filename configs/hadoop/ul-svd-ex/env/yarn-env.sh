@@ -78,7 +78,7 @@
       # and/or YARN_TIMELINESERVER_OPTS.
       # If not specified, the default value will be picked from either YARN_HEAPMAX
       # or JAVA_HEAP_MAX with YARN_HEAPMAX as the preferred option of the two.
-      export YARN_TIMELINESERVER_HEAPSIZE=1024
+      export YARN_TIMELINESERVER_HEAPSIZE=8072
 
       # Specify the JVM options to be used when starting the NodeManager.
       # These options will be appended to the options specified as YARN_OPTS

@@ -7,7 +7,7 @@
     
     <property>
       <name>hadoop.registry.zk.quorum</name>
-      <value>n03.cl01.ulaval.ca:2181,n04.cl01.ulaval.ca:2181,n05.cl01.ulaval.ca:2181</value>
+      <value>ul-svd-ex-nod03.ul.ca:2181,ul-svd-ex-nod04.ul.ca:2181,ul-svd-ex-nod05.ul.ca:2181</value>
     </property>
     
     <property>
@@ -57,12 +57,12 @@
     
     <property>
       <name>yarn.log.server.url</name>
-      <value>http://n02.cl01.ulaval.ca:19888/jobhistory/logs</value>
+      <value>http://ul-svd-ex-nod05.ul.ca:19888/jobhistory/logs</value>
     </property>
     
     <property>
       <name>yarn.log.server.web-service.url</name>
-      <value>http://n01.cl01.ulaval.ca:8188/ws/v1/applicationhistory</value>
+      <value>http://ul-svd-ex-nod05.ul.ca:8188/ws/v1/applicationhistory</value>
     </property>
     
     <property>
@@ -171,6 +171,16 @@
     </property>
     
     <property>
+      <name>yarn.nodemanager.kill-escape.launch-command-line</name>
+      <value>slider-agent,LLAP</value>
+    </property>
+    
+    <property>
+      <name>yarn.nodemanager.kill-escape.user</name>
+      <value>hive</value>
+    </property>
+    
+    <property>
       <name>yarn.nodemanager.linux-container-executor.cgroups.strict-resource-usage</name>
       <value>false</value>
     </property>
@@ -242,7 +252,7 @@
     
     <property>
       <name>yarn.nodemanager.resource.memory-mb</name>
-      <value>12288</value>
+      <value>9216</value>
     </property>
     
     <property>
@@ -262,12 +272,12 @@
     
     <property>
       <name>yarn.resourcemanager.address</name>
-      <value>n02.cl01.ulaval.ca:8050</value>
+      <value>ul-svd-ex-nod02.ul.ca:8050</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.admin.address</name>
-      <value>n02.cl01.ulaval.ca:8141</value>
+      <value>ul-svd-ex-nod02.ul.ca:8141</value>
     </property>
     
     <property>
@@ -322,17 +332,27 @@
     
     <property>
       <name>yarn.resourcemanager.hostname</name>
-      <value>n02.cl01.ulaval.ca</value>
+      <value>ul-svd-ex-nod02.ul.ca</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.hostname.rm1</name>
-      <value>n02.cl01.ulaval.ca</value>
+      <value>ul-svd-ex-nod02.ul.ca</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.hostname.rm2</name>
-      <value>n05.cl01.ulaval.ca</value>
+      <value>ul-svd-ex-nod01.ul.ca</value>
+    </property>
+    
+    <property>
+      <name>yarn.resourcemanager.monitor.capacity.preemption.natural_termination_factor</name>
+      <value>1</value>
+    </property>
+    
+    <property>
+      <name>yarn.resourcemanager.monitor.capacity.preemption.total_preemption_per_round</name>
+      <value>0.2</value>
     </property>
     
     <property>
@@ -347,12 +367,12 @@
     
     <property>
       <name>yarn.resourcemanager.resource-tracker.address</name>
-      <value>n02.cl01.ulaval.ca:8025</value>
+      <value>ul-svd-ex-nod02.ul.ca:8025</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.scheduler.address</name>
-      <value>n02.cl01.ulaval.ca:8030</value>
+      <value>ul-svd-ex-nod02.ul.ca:8030</value>
     </property>
     
     <property>
@@ -387,17 +407,17 @@
     
     <property>
       <name>yarn.resourcemanager.webapp.address</name>
-      <value>n02.cl01.ulaval.ca:8088</value>
+      <value>ul-svd-ex-nod02.ul.ca:8088</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.address.rm1</name>
-      <value>n02.cl01.ulaval.ca:8088</value>
+      <value>ul-svd-ex-nod02.ul.ca:8088</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.address.rm2</name>
-      <value>n05.cl01.ulaval.ca:8088</value>
+      <value>ul-svd-ex-nod01.ul.ca:8088</value>
     </property>
     
     <property>
@@ -407,17 +427,17 @@
     
     <property>
       <name>yarn.resourcemanager.webapp.https.address</name>
-      <value>n02.cl01.ulaval.ca:8090</value>
+      <value>ul-svd-ex-nod02.ul.ca:8090</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.https.address.rm1</name>
-      <value>n02.cl01.ulaval.ca:8090</value>
+      <value>ul-svd-ex-nod02.ul.ca:8090</value>
     </property>
     
     <property>
       <name>yarn.resourcemanager.webapp.https.address.rm2</name>
-      <value>n05.cl01.ulaval.ca:8090</value>
+      <value>ul-svd-ex-nod01.ul.ca:8090</value>
     </property>
     
     <property>
@@ -437,7 +457,7 @@
     
     <property>
       <name>yarn.resourcemanager.zk-address</name>
-      <value>n05.cl01.ulaval.ca:2181,n04.cl01.ulaval.ca:2181,n03.cl01.ulaval.ca:2181</value>
+      <value>ul-svd-ex-nod03.ul.ca:2181,ul-svd-ex-nod04.ul.ca:2181,ul-svd-ex-nod05.ul.ca:2181</value>
     </property>
     
     <property>
@@ -467,7 +487,7 @@
     
     <property>
       <name>yarn.scheduler.maximum-allocation-mb</name>
-      <value>12288</value>
+      <value>9216</value>
     </property>
     
     <property>
@@ -487,7 +507,7 @@
     
     <property>
       <name>yarn.timeline-service.address</name>
-      <value>n01.cl01.ulaval.ca:10200</value>
+      <value>ul-svd-ex-nod05.ul.ca:10200</value>
     </property>
     
     <property>
@@ -537,12 +557,12 @@
     
     <property>
       <name>yarn.timeline-service.entity-group-fs-store.group-id-plugin-classes</name>
-      <value>org.apache.tez.dag.history.logging.ats.TimelineCachePluginImpl,org.apache.spark.deploy.history.yarn.plugin.SparkATSPlugin</value>
+      <value>org.apache.tez.dag.history.logging.ats.TimelineCachePluginImpl</value>
     </property>
     
     <property>
       <name>yarn.timeline-service.entity-group-fs-store.group-id-plugin-classpath</name>
-      <value>/usr/hdp/${hdp.version}/spark/hdpLib/*</value>
+      <value></value>
     </property>
     
     <property>
@@ -566,13 +586,13 @@
     </property>
     
     <property>
-      <name>yarn.timeline-service.http-authentication.proxyuser.root.groups</name>
+      <name>yarn.timeline-service.http-authentication.proxyuser.ambari.groups</name>
       <value>*</value>
     </property>
     
     <property>
-      <name>yarn.timeline-service.http-authentication.proxyuser.root.hosts</name>
-      <value>n01.cl01.ulaval.ca</value>
+      <name>yarn.timeline-service.http-authentication.proxyuser.ambari.hosts</name>
+      <value>ul-svd-ex-nod01.ul.ca</value>
     </property>
     
     <property>
@@ -647,12 +667,12 @@
     
     <property>
       <name>yarn.timeline-service.webapp.address</name>
-      <value>n01.cl01.ulaval.ca:8188</value>
+      <value>ul-svd-ex-nod05.ul.ca:8188</value>
     </property>
     
     <property>
       <name>yarn.timeline-service.webapp.https.address</name>
-      <value>n01.cl01.ulaval.ca:8190</value>
+      <value>ul-svd-ex-nod05.ul.ca:8190</value>
     </property>
     
   </configuration>

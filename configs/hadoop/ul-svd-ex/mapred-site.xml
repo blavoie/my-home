@@ -62,7 +62,7 @@
     
     <property>
       <name>mapreduce.jobhistory.address</name>
-      <value>n02.cl01.ulaval.ca:10020</value>
+      <value>ul-svd-ex-nod05.ul.ca:10020</value>
     </property>
     
     <property>
@@ -102,12 +102,12 @@
     
     <property>
       <name>mapreduce.jobhistory.webapp.address</name>
-      <value>n02.cl01.ulaval.ca:19888</value>
+      <value>ul-svd-ex-nod05.ul.ca:19888</value>
     </property>
     
     <property>
       <name>mapreduce.map.java.opts</name>
-      <value>-Xmx3276m</value>
+      <value>-Xmx2457m</value>
     </property>
     
     <property>
@@ -117,7 +117,7 @@
     
     <property>
       <name>mapreduce.map.memory.mb</name>
-      <value>4096</value>
+      <value>3072</value>
     </property>
     
     <property>
@@ -152,7 +152,7 @@
     
     <property>
       <name>mapreduce.reduce.java.opts</name>
-      <value>-Xmx6553m</value>
+      <value>-Xmx4915m</value>
     </property>
     
     <property>
@@ -162,7 +162,7 @@
     
     <property>
       <name>mapreduce.reduce.memory.mb</name>
-      <value>8192</value>
+      <value>6144</value>
     </property>
     
     <property>
@@ -212,7 +212,7 @@
     
     <property>
       <name>mapreduce.task.io.sort.mb</name>
-      <value>2047</value>
+      <value>1719</value>
     </property>
     
     <property>
@@ -227,7 +227,7 @@
     
     <property>
       <name>yarn.app.mapreduce.am.command-opts</name>
-      <value>-Xmx3276m -Dhdp.version=${hdp.version}</value>
+      <value>-Xmx2457m -Dhdp.version=${hdp.version}</value>
     </property>
     
     <property>
@@ -237,7 +237,7 @@
     
     <property>
       <name>yarn.app.mapreduce.am.resource.mb</name>
-      <value>4096</value>
+      <value>3072</value>
     </property>
     
     <property>
