@@ -14,17 +14,17 @@ Be careful, because hdfs-shell don't support $HADOOP_CONF_DIR environment variab
 
 Static volume:
 ```
-docker run $DOCKER_ADD_HOSTS --rm -it -v /etc/hadoop/conf:/etc/hadoop/conf hdfs-shell
+docker run $DOCKER_ADD_HOSTS --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf hdfs-shell
 ```
 
 Dynamic volume:
 ```
-docker run $DOCKER_ADD_HOSTS --rm -it -v $HADOOP_CONF_DIR:/etc/hadoop/conf hdfs-shell
+docker run $DOCKER_ADD_HOSTS --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf hdfs-shell
 ```
 
 ### Aliases
 
 ```
-alias hdfs-shell='docker run $DOCKER_ADD_HOSTS --rm -it -v $HADOOP_CONF_DIR:/etc/hadoop/conf hdfs-shell'
+alias hdfs-shell='docker run $DOCKER_ADD_HOSTS --rm -it --read-only -v ${HADOOP_CONF_DIR:-/etc/hadoop/conf}:/etc/hadoop/conf hdfs-shell'
 ```
 

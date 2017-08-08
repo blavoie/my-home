@@ -22,6 +22,13 @@ Host lab3.w
 Host lab4
     Hostname laptop.ul.brunol.com
     Port 11022
+    CheckHostIP no
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+Host lab4.br
+    Hostname labo-ena-04.vms.brunol.com
+    Port 22
 
 Host lab5
     Hostname labo-ena-05.vms.brunol.com

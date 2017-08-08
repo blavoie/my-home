@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build -t hdp-client .
+docker build -t ul/svd/hdp-client .

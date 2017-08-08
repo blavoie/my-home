@@ -6,11 +6,14 @@
 #   firewall-cmd --permanent --zone=trusted --add-source=ipset:acces-vpn
 #   firewall-cmd --reload
 #
+# Add automatic reload to cron, to flush old IPs
+#   0 4 * * * /usr/bin/firewall-cmd --reload
+#
 # Package needed for ifdata tool:
 #   sudo dnf install -y moreutils
 #
 
-nodes=("n01.cl01" "n02.cl01" "n03.cl01" "n04.cl01" "n05.cl01")
+nodes=("ul-svd-ex-nod01.ul.ca" "ul-svd-ex-nod02.ul.ca" "ul-svd-ex-nod03.ul.ca" "ul-svd-ex-nod04.ul.ca" "ul-svd-ex-nod05.ul.ca")
 
 #myip=$(ifdata -pa vpn0)
 #myip=$($SSH_CLIENT | awk '{print $1}')
@@ -20,13 +23,7 @@ for node in "${nodes[@]}"
 do
     echo "** Processing node $node..."
 
-    # Reset current entries
-    echo "* Reset current ipset acces-vpn..."
-    ssh -t root@$node "firewall-cmd --permanent --delete-ipset=acces-vpn"
-    ssh -t root@$node "firewall-cmd --permanent --new-ipset=acces-vpn --type=hash:ip && firewall-cmd --permanent --zone=trusted --add-source=ipset:acces-vpn"
-    
-    # Add new entries
     echo "* Add $myip to ipset..."
-    ssh -t root@$node "firewall-cmd --permanent --ipset=acces-vpn --add-entry=\$(echo \$SSH_CLIENT | awk '{print \$1}' ) && firewall-cmd --reload"
+    ssh -t root@$node "firewall-cmd --ipset=acces-vpn --add-entry=\$(echo \$SSH_CLIENT | awk '{print \$1}' )"
 done
 
