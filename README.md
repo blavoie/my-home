@@ -6,12 +6,15 @@ Various stuff about my home directory : dotfiles, script, functions, aliases, pu
 
 ## Checkout somewhere
 
+```
 mkdir -p ~/dev
 cd ~/dev
 git clone git@github.com:blavoie/my-home.git
+```
 
 ## Backup current files and install
 
+```
 mv ~/bin ~/bin.bak
 ln -s dev/my-home/bin/ bin
 
@@ -26,7 +29,7 @@ mv ~/.bash_profile ~/.bash_profile.bak
 ln -s ~/dev/my-home/dotfiles/bash_profile ~/.bash_profile
 
 mv ~/.nanorc ~/.nanorc.bak
-ln -s ~/dev/my-home/dotfiles/.nanorc ~/.nanorc
+ln -s ~/dev/my-home/dotfiles/.nanorc ~/.nanorc===============================================
 
 mv ~/.vimrc ~/.vimrc.bak
 ln -s ~/dev/my-home/dotfiles/.vimrc ~/.vimrc
@@ -42,7 +45,7 @@ ln -s ~/dev/my-home/dotfiles/.dockerfunctions ~/.dockerfunctions
 
 mv ~/.tools ~/.tools
 ln -s ~/dev/my-home/dotfiles/.tools ~/.tools
-
+```
 
 # Other nice projects that can inspire
 
