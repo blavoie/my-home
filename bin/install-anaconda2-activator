@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Must be executed with root or sudo.
+#
+
+cat <<'EOT'> /usr/local/bin/env-anaconda2.sh
+#!/usr/bin/env bash
+ANACONDA2_HOME=/opt/anaconda2
+export ANACONDA2_HOME
+ 
+PATH=$ANACONDA2_HOME/bin/:$PATH
+export PATH
+EOT
+  
+chmod +x /usr/local/bin/env-anaconda2.sh
+  
+cat <<'EOT'> /etc/profile.d/anaconda2.sh
+alias env-anaconda2='source /usr/local/bin/env-anaconda2.sh'
+EOT
+  
+source /etc/profile.d/anaconda2.sh

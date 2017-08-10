@@ -26,10 +26,10 @@ mv ~/.bashrc ~/.bashrc.bak
 ln -s ~/dev/my-home/dotfiles/.bashrc ~/.bashrc
 
 mv ~/.bash_profile ~/.bash_profile.bak
-ln -s ~/dev/my-home/dotfiles/bash_profile ~/.bash_profile
+ln -s ~/dev/my-home/dotfiles/.bash_profile ~/.bash_profile
 
 mv ~/.nanorc ~/.nanorc.bak
-ln -s ~/dev/my-home/dotfiles/.nanorc ~/.nanorc===============================================
+ln -s ~/dev/my-home/dotfiles/.nanorc ~/.nanorc
 
 mv ~/.vimrc ~/.vimrc.bak
 ln -s ~/dev/my-home/dotfiles/.vimrc ~/.vimrc
