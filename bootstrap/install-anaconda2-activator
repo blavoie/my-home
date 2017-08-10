@@ -18,4 +18,4 @@ cat <<'EOT'> /etc/profile.d/anaconda2.sh
 alias env-anaconda2='source /usr/local/bin/env-anaconda2.sh'
 EOT
   
-source /etc/profile.d/anaconda2.sh
+echo "You can do: source /etc/profile.d/anaconda2.sh"

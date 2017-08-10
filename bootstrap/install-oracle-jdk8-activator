@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Must be executed with root or sudo.
+#
+
+cat <<'EOT'> /usr/local/bin/env-oracle-jdk8.sh
+#!/usr/bin/env bash
+JAVA_HOME=/opt/jdk8
+export JAVA_HOME
+ 
+PATH=$JAVA_HOME/bin/:$PATH
+export PATH
+EOT
+  
+chmod +x /usr/local/bin/env-oracle-jdk8.sh
+  
+cat <<'EOT'> /etc/profile.d/oracle-jdk8.sh
+alias env-oracle-jdk8='source /usr/local/bin/env-oracle-jdk8.sh'
+EOT
+  
+echo "You can do: source /etc/profile.d/oracle-jdk8.sh"

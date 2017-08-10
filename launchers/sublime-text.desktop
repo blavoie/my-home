@@ -1,8 +1,0 @@
-[Desktop Entry]
-Comment=
-Terminal=false
-Name=Sublime Text
-Exec=/home/bl/app/sublime-text/sublime_text
-Type=Application
-Icon=/home/bl/app/sublime-text/Icon/48x48/sublime_text.png
-Categories=Development;IDE;
