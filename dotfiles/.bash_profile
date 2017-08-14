@@ -112,7 +112,7 @@ export PATH
 ### NodeJS
 
 mkdir -p ~/.npm-global
-npm config set prefix '~/.npm-global'
+npm config set prefix '~/.npm-global' 2>/dev/null
   
 export PATH=~/.npm-global/bin:$PATH
 export NPM_CONFIG_PREFIX=~/.npm-global

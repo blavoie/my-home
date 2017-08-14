@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=Scala IDE
+Terminal=false
+Name=Scala IDE
+#Exec=/opt/scala-SDK/eclipse
+Exec=sh -c "source env-oracle-jdk8.sh && /opt/scala-SDK/eclipse"
+Type=Application
+Icon=/opt/scala-SDK/icon.xpm
+Categories=Development;IDE;
+Name[en_CA.utf8]=Scala IDE
+GenericName=Scala IDE

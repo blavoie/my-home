@@ -3,6 +3,6 @@
 # Must be executed with root or sudo.
 #
 
-cp -u ./resources/oracle-jdk8-mission-control.desktop /usr/share/applications
+cp -u ./resources/scala-ide.desktop /usr/share/applications
 
 chmod 644 /usr/share/applications/*.desktop

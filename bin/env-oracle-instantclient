@@ -13,7 +13,7 @@
 #
 #    - As root, creating a file named /etc/ld.so.conf.d/oracle-instantclient-x86_64.conf with the path to the libraries,
 #      followed by a ldconfig command invocation.
-#      Currently, this path is: /usr/lib/oracle/12.1/client64/lib      
+#      Currently, this path is: /usr/lib/oracle/12.2/client64/lib      
 #
 # If we have root access, the second option is the preferred way to do things. This will make all users to have automatically
 # access to libraries with the dynamic linker.
@@ -22,7 +22,7 @@
 
 unset ORACLE_BASE
 
-ORACLE_HOME=/usr/lib/oracle/12.1/client64
+ORACLE_HOME=/usr/lib/oracle/12.2/client64
 export ORACLE_HOME
 
 PATH=$ORACLE_HOME/bin:$PATH
@@ -37,5 +37,5 @@ export CLASSPATH
 OCI_LIB=$ORACLE_HOME/lib
 export OCI_LIB
 
-OCI_INC=/usr/include/oracle/12.1/client64/
+OCI_INC=/usr/include/oracle/12.2/client64/
 export OCI_INC

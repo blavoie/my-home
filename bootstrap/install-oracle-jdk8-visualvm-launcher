@@ -2,3 +2,7 @@
 #
 # Must be executed with root or sudo.
 #
+
+cp -u ./resources/oracle-jdk8-visualvm.desktop /usr/share/applications
+
+chmod 644 /usr/share/applications/*.desktop

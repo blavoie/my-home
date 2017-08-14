@@ -2,7 +2,8 @@
 Comment=
 Terminal=false
 Name=Eclipse
-Exec=/opt/eclipse/eclipse
+#Exec=/opt/eclipse/eclipse
+Exec=sh -c "source env-oracle-jdk8.sh &&/opt/eclipse/eclipse"
 Type=Application
 Icon=/opt/eclipse/icon.xpm
 Categories=Development;IDE;Java
