@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+YELLOW=$(tput setaf 3)
+
+NODES=${NODES_FILE:-nodes.txt}
+for NODE in `cat $NODES`
+do
+    echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+    echo "${BOLD}-- Exécution de la commande demandée sur: ${YELLOW}$1@$NODE${NORMAL}"
+    echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
+    ssh -t $1@$NODE "hostnamectl set-hostname ${NODE}"
+    echo ""
+done
