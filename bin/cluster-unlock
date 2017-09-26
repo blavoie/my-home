@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# Needs to have a chain for that purpose:
+#	iptables -N ROAMING_UL
+#	iptables -I INPUT -j ROAMING_UL
+#
+#
 
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
@@ -10,6 +16,7 @@ do
     echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
     echo "${BOLD}-- Exécution de la commande demandée sur: ${YELLOW}$1@$NODE${NORMAL}"
     echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
-    ssh -t $1@$NODE $2
-    echo ""
+    #ssh -t $1@$NODE $2
+    #ssh -t root@$node "firewall-cmd --ipset=acces-vpn --add-entry=\$(echo \$SSH_CLIENT | awk '{print \$1}' )"
+    ssh -t $NODE "sudo iptables -I ROAMING_UL -s \$(echo \$SSH_CLIENT | awk '{print \$1}' ) -j ACCEPT"
 done

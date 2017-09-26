@@ -5,7 +5,7 @@ NORMAL=$(tput sgr0)
 YELLOW=$(tput setaf 3)
 
 NODES=${NODES_FILE:-nodes.txt}
-for NODE in `cat $NODES`
+for NODE in `sort $NODES`
 do
     echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
     echo "${BOLD}-- Exécution de la commande demandée sur: ${YELLOW}$1@$NODE${NORMAL}"

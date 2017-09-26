@@ -10,6 +10,7 @@ do
     echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
     echo "${BOLD}-- Exécution de la commande demandée sur: ${YELLOW}$1@$NODE${NORMAL}"
     echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
-    ssh -t $1@$NODE $2
-    echo ""
+    #ssh -t $1@$NODE $2
+    #ssh -t root@$node "firewall-cmd --ipset=acces-vpn --add-entry=\$(echo \$SSH_CLIENT | awk '{print \$1}' )"
+    ssh -t $NODE "sudo iptables -F ROAMING_UL"
 done
