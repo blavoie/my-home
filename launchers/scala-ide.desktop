@@ -1,8 +1,9 @@
 [Desktop Entry]
-Comment=
+Comment=Scala IDE
 Terminal=false
 Name=Scala IDE
-Exec=/home/bl/app/scala-ide/eclipse
+#Exec=/home/bl/app/scala-ide/eclipse
+Exec=sh -c "env-oracle-jdk8 && /home/bl/app/scala-ide/eclipse"
 Type=Application
 Icon=/home/bl/app/scala-ide/icon.xpm
 Categories=Development;IDE;

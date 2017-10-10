@@ -117,6 +117,14 @@ npm config set prefix '~/.npm-global' 2>/dev/null
 export PATH=~/.npm-global/bin:$PATH
 export NPM_CONFIG_PREFIX=~/.npm-global
 
+### OpenShift CLI
+
+OPENSHIFT_CLIENT=/opt/openshift-origin-client-tools
+
+if [ -d $OPENSHIFT_CLIENT ]; then
+  export PATH=$OPENSHIFT_CLIENT:$PATH
+fi
+
 ### HDFS Shell
 
 #HDFS_SHELL_HOME=~/app/hdfs-shell
