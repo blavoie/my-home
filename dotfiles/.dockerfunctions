@@ -86,6 +86,7 @@ openconnect() {
 	del_stopped openconnect
 
 	docker run --rm -it \
+                -p 1080:1080
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-e DISPLAY \
 		--privileged \

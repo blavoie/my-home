@@ -58,15 +58,11 @@ Host axiom-pub axiom.pub axiom.pub.roam axiom.pub.roam.brunol.com
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 
-Host *.cl01 *.cl01.ulaval.ca ul-svd-ex-*.ul.ca
-    User root
-    CheckHostIP no
-    IdentitiesOnly yes
-    StrictHostKeyChecking no
-    UserKnownHostsFile ~/.ssh/known_hosts.cl01.ulaval.ca
-
 Host *.ul.ca
     User ul-a-brlav35
+
+Host ul-svd-ex-*.ul.ca
+    StrictHostKeyChecking no
 
 Host *
     ForwardX11 no 

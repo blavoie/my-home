@@ -20,7 +20,7 @@ docker build -t blavoie/openconnect .
 ### Start the image
 
 ```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix --privileged -e DISPLAY blavoie/openconnect /bin/bash
+docker run --rm -it -p 1080:1080 -v /tmp/.X11-unix:/tmp/.X11-unix --privileged -e DISPLAY blavoie/openconnect /bin/bash
 ```
 
 or simply call the defined function in ~/.dockerfunc

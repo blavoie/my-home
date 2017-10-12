@@ -21,7 +21,8 @@ RUN yum update -y
 #### Base install with Java and repo file 
 
 ENV HDP_VERSION=2.6.1.0 \
-    JAVA_HOME=/usr/lib/jvm/jre-1.8.0
+    JAVA_HOME=/usr/lib/jvm/jre-1.8.0 \
+    KRB5CCNAME=FILE:/tmp/krb5cc
     
 RUN yum install -y java-1.8.0-openjdk-headless \
                    which \
@@ -37,7 +38,8 @@ RUN yum install -y hadoop-client \
                    lzo \
                    lzo-devel \
                    hadooplzo \
-                   hadooplzo-native
+                   hadooplzo-native \
+                   krb5-workstation
 
 #### Set configurations
 ## 
