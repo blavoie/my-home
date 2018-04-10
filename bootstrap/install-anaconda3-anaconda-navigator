@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Must be executed with root or sudo.
+#
+
+cp -u ./resources/anaconda3-anaconda-navigator.desktop /usr/share/applications
+
+chmod 644 /usr/share/applications/*.desktop

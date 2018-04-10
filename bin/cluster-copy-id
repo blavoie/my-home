@@ -5,11 +5,13 @@ NORMAL=$(tput sgr0)
 YELLOW=$(tput setaf 3)
 
 NODES=${NODES_FILE:-nodes.txt}
-for NODE in `sort $NODES`
+for NODE in $(grep -v "^#" $NODES | sort)
 do
     echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
     echo "${BOLD}-- Exécution de la commande demandée sur: ${YELLOW}$1@$NODE${NORMAL}"
     echo "${BOLD}--------------------------------------------------------------------------${NORMAL}"
-    ssh-copy-id -i $2 $1@$NODE
+    #ssh-copy-id -i $2 $1@$NODE
+    export SSHPASS=$2
+    sshpass -e ssh-copy-id -o 'StrictHostKeyChecking=no' $1@$NODE
     echo ""
 done

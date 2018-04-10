@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+for p in $(pgrep ^yam$)
+do 
+  renice -n 19 -p $p
+done

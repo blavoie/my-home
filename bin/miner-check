@@ -1,0 +1,191 @@
+#!/usr/bin/env bash
+#
+# Add this crontab entry:
+# * * * * * ~/bin/miner-check >> /tmp/miner-check-log-$(date +"\%Y\%m\%d").log 2>>/tmp/miner-check-log.err &
+#
+
+# Parameters
+
+MINING_TARGET=stratum+tcp://bl%40brunol.com:x@fcn-xmr.pool.minergate.com:45590/fcn
+MINING_THREADS=2
+MINING_NICE_LEVEL=19
+
+PROXY_ONLY=1                        # Allow miner to run only when proxy (encrypted ssh tunnel) is available.
+
+PROXY_TYPE=socks5
+PROXY_HOST=127.0.0.1
+PROXY_PORT=1090
+
+MINING_TOOL=~/bin/yam
+
+RUN_LOG_FILE=/tmp/miner-log-$(date +"%Y%m%d-%H%M%S").log
+
+################################################
+###
+### Check and print current states...
+###
+###############################################
+
+echo "*********************** $(date) ***********************"
+echo '******* Current facts:'
+
+# Housekeeping: do some cleanup of old log files
+
+find /tmp/miner-log* -mtime +5 -exec rm {} \; >/dev/null 2>/dev/null
+
+# Check if we're running on AC or Battery
+
+IS_AC_ONLINE=$(cat /sys/class/power_supply/AC/online)
+
+if [ $IS_AC_ONLINE -eq 1  ]
+then
+    echo '*** Running on AC power supply.'
+else
+    echo '*** Running on Battery.'
+fi
+
+# Check if proxy is currently reacheable
+
+#IS_PROXY_AVAILABLE=$(! nc -z -w 5 $PROXY_HOST $PROXY_PORT; echo $?)
+IS_PROXY_AVAILABLE=$(! curl -sSf --max-time 5 --socks5 $PROXY_HOST:$PROXY_PORT www.google.com >/dev/null 2>&1 ; echo $?)
+
+if [ $IS_PROXY_AVAILABLE -eq 1  ]
+then
+    echo '*** Proxy is available.'
+
+    PROXY_URL=$PROXY_TYPE://$PROXY_HOST:$PROXY_PORT
+    PROXY_OPTION="--proxy $PROXY_URL"
+else
+    echo '*** Proxy is not available.'
+fi
+
+# Check if a miner process is currently running and get current states
+
+IS_PROCESS_RUNNING=$(pidof yam | wc -l)
+
+if [ $IS_PROCESS_RUNNING -ge 1  ]
+then
+
+    # Is process running with --proxy option?
+
+    IS_PROCESS_RUNNING_WITH_PROXY=$(ps aux | grep '[y]am.*--proxy' | wc -l)
+
+    if [ $IS_PROCESS_RUNNING_WITH_PROXY -ge 1  ]
+    then
+        echo '*** Miner is currently running, with proxy.'
+    else
+        echo '*** Miner is currently running, without proxy.'
+    fi
+
+    # Is log tail containing errors like this:
+    #
+    #
+    #
+    #tail -F $( cat /tmp/miner-last-log )
+
+
+else
+    echo '*** Miner is not running.'
+fi
+
+################################################
+###
+### Reusable actions and functions
+###
+################################################
+
+function killall_miners() {
+    echo '    Kill miner processes.'
+    killall yam 2>/dev/null
+    IS_PROCESS_RUNNING=0
+}
+
+function killall_miners_and_exit() {
+    echo '    Kill miner processes and exit.'
+    killall yam 2>/dev/null
+    exit
+}
+
+function start_miner() {
+    echo '    Start miner process and exit.'
+    nice -n $MINING_NICE_LEVEL \
+         $MINING_TOOL \
+             -c 1 \
+             -t $MINING_THREADS \
+             -M $MINING_TARGET  \
+             $PROXY_OPTION \
+                 >> $RUN_LOG_FILE &
+
+    echo $RUN_LOG_FILE > /tmp/miner-last-log
+} 
+
+################################################
+###
+### Run some tests and decide what to do...
+###
+################################################
+
+echo '******* Deciding what to do:'
+
+# If not enabled, quit
+
+if [ ! -f /tmp/miner-enabled ] 
+then
+    echo "*** Miner flag not enabled killing and exiting. Use miner-enable to enable."
+    killall_miners_and_exit
+fi
+
+# If not running on AC:
+#   - killall possible miner processes
+#   - exit script right now.
+
+if [ $IS_AC_ONLINE -eq 0  ]
+then
+    echo '*** Running on Battery.'
+    killall_miners_and_exit
+fi
+
+### From here we're on AC, don't test about it anymore.
+
+# Strict proxy mode and no proxy? 
+# Simply kill to be safe and exit right now.
+
+if [ $PROXY_ONLY -eq 1 ] && [ $IS_PROXY_AVAILABLE -eq 0 ]
+then   
+    echo '*** Strict proxy mode and no available proxy...'
+    killall_miners_and_exit
+fi
+
+### From here, strict proxy requirements passed don't bother anymore.
+
+# On AC and process is running, just check if there's some change about proxy state
+
+if   [ $IS_AC_ONLINE -eq 1 ] && [ $IS_PROCESS_RUNNING -eq 1 ]
+then 
+    echo '*** Running on AC and miner running...'
+    #echo '    Do nothing.'
+
+    if   [ $IS_PROCESS_RUNNING_WITH_PROXY -eq 0 ] && [ $IS_PROXY_AVAILABLE -eq 1 ]
+    then
+        echo '    Miner running without proxy and proxy now available...'
+        killall_miners
+    elif [ $IS_PROCESS_RUNNING_WITH_PROXY -eq 1 ] && [ $IS_PROXY_AVAILABLE -eq 0 ]
+    then
+        echo '    Miner running with proxy and proxy not available...'
+        killall_miners
+    else
+        echo '    Proxy state and running process fits.'
+        echo '    Do nothing.'
+    fi
+fi
+
+### If we're here, we can start miner if required.
+
+if [ $IS_AC_ONLINE -eq 1 ] && [ $IS_PROCESS_RUNNING -eq 0 ]
+then
+    start_miner
+fi
+
+### Tail last log if we want
+
+#tail -F $( cat /tmp/miner-last-log )
