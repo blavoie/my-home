@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=GitKraken
+Terminal=false
+Name=GitKraken
+Exec=/opt/gitkraken/gitkraken
+Type=Application
+Icon=/opt/gitkraken/gitkraken.png
+Categories=Development;IDE;
+Name[en_CA.utf8]=GitKraken
+GenericName=GitKraken

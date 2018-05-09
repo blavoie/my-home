@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=Jailer GUI
+Terminal=false
+Name=Jailer GUI
+Exec=/opt/jailer/jailerGUI.sh
+Type=Application
+#Icon=/opt/gitkraken/gitkraken.png
+Categories=Development;IDE;Databases
+Name[en_CA.utf8]=Jailer GUI
+GenericName=Jailer GUI

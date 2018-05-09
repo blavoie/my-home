@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=Jailer - DBeauty
+Terminal=false
+Name=Jailer - DBeauty
+Exec=/opt/jailer/dbeauty.sh
+Type=Application
+#Icon=/opt/gitkraken/gitkraken.png
+Categories=Development;IDE;Databases
+Name[en_CA.utf8]=Jailer - DBeauty
+GenericName=Jailer - DBeauty

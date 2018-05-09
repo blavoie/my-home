@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#
+# Must be executed with root or sudo.
+#
+# Jailer Project Page: http://jailer.sourceforge.net/
+#
+
+JAILER_URL=https://cfhcable.dl.sourceforge.net/project/jailer/v7.8.2/jailer_7.8.2.zip
+
+if [ ! -d /opt/jailer ]
+then
+
+    wget -O /tmp/jailer.zip $JAILER_URL
+    unzip /tmp/jailer.zip
+
+    mv jailer /opt/
+    chown -R root:root /opt/jailer
+    chmod -R  a+rX /opt/jailer
+
+    rm /opt/jailer.zip
+fi
+
+
+# Install Launcher
+
+cp -u ./resources/jailer-*.desktop /usr/share/applications
+chmod 644 /usr/share/applications/*.desktop
+
