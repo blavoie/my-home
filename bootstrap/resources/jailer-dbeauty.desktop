@@ -2,7 +2,7 @@
 Comment=Jailer - DBeauty
 Terminal=false
 Name=Jailer - DBeauty
-Exec=/opt/jailer/dbeauty.sh
+Exec=sh -c '$HOME/app/jailer/dbeauty.sh'
 Type=Application
 #Icon=/opt/gitkraken/gitkraken.png
 Categories=Development;IDE;Databases
