@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Postman
+Terminal=false
+Name=Postman
+Exec=/opt/Postman/Postman
+Type=Application
+Icon=/opt/Postman/resources/app/assets/icon.png
+Categories=Development;IDE;
+GenericName=Postman
