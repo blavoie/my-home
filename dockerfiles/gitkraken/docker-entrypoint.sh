@@ -3,6 +3,7 @@
 USER_NAME=${USER_NAME:-developer}
 DATA_DIR=/opt/gitkraken/data
 CONFIG_DIR=/opt/gitkraken/config
+SSH_DIR=/opt/gitkraken/ssh
 
 id -u ${USER_NAME} > /dev/null 2>&1
 if [ $? -eq 1 ]; then
@@ -26,6 +27,11 @@ if [ $? -eq 1 ]; then
     mkdir -p ${CONFIG_DIR}
     chown ${USER_ID}:${GROUP_ID} ${CONFIG_DIR}
     gosu ${USER_NAME} ln -s ${CONFIG_DIR} /home/${USER_NAME}/.gitkraken
+
+    # Create/bind ssh directory
+    mkdir -p ${SSH_DIR}
+    chown ${USER_ID}:${GROUP_ID} ${SSH_DIR}
+    gosu ${USER_NAME} ln -s ${SSH_DIR} /home/${USER_NAME}/.ssh
 fi
 
 gosu ${USER_NAME} "$@"

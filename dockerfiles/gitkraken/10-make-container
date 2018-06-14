@@ -4,6 +4,9 @@ docker create --name gitkraken \
     -e DISPLAY=$DISPLAY \
     -v $HOME:/opt/gitkraken/data \
     -v $HOME/.gitkraken:/opt/gitkraken/config \
+    -v $HOME/.ssh:/opt/gitkraken/ssh \
+    -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
+    -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
     -e USER_ID=$(id -u) \
     -e GROUP_ID=$(id -g) \
     --privileged \

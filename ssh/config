@@ -4,6 +4,15 @@ Host localhost 127.0.0.1 0.0.0.0
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 
+# Easy SSH to Virtual Machines
+Host *.vm
+    CheckHostIP no
+    Compression no
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    ProxyCommand nc $(virsh domifaddr $(echo %h | sed "s/\.vm//g") | awk -F'[ /]+' '{if (NR>2 && $5) print $5}') %p
+
+# Various tests and lab machines
 Host lab1
     Hostname laptop.ul.brunol.com
     Port 22
@@ -30,13 +39,13 @@ Host lab4.br
     Hostname labo-ena-04.vms.brunol.com
     Port 22
 
-Host lab5
-    Hostname labo-ena-05.vms.brunol.com
-
-Host raspi
+Host home home.brunol.com
     Hostname home.brunol.com
     Port 22
-    User pi
+    DynamicForward 1090
+    ServerAliveInterval 30
+    ServerAliveCountMax 3
+    ExitOnForwardFailure yes
 
 Host raspi-lan
     Hostname raspberrypi.lan.brunol.com
@@ -58,11 +67,41 @@ Host axiom-pub axiom.pub axiom.pub.roam axiom.pub.roam.brunol.com
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 
+#######
+### Since the first obtained value for each parameter is used, more host-specific 
+### declarations should be given near the beginning of the file, and general defaults at the end.
+#######
+
+### SVD
+
+Host ul-svd-at-adm-socks
+    Hostname ul-svd-at-adm01.ul.ca
+    User ul-a-brlav35
+    DynamicForward 1085
+
+Host ul-svd-at-adm
+    Hostname ul-svd-at-adm01.ul.ca
+    User ul-a-brlav35
+
+Host ul-svd-at-*.ul.ca
+    User ul-a-brlav35
+    ProxyJump ul-svd-at-adm
+
+Host ul-svd-ex-*.ul.ca
+    User ul-a-brlav35
+    ProxyJump ul-svd-at-adm
+
 Host *.ul.ca
     User ul-a-brlav35
 
 Host ul-svd-ex-*.ul.ca
     StrictHostKeyChecking no
 
+Host *.us.coelab
+    User root
+
+### Apply to each hosts
+
 Host *
+    ServerAliveInterval 60
     ForwardX11 no 

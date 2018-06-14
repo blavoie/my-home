@@ -5,21 +5,24 @@
 
 if [ ! -d /opt/gitkraken ]
 then
-
-  wget -O /tmp/gitkraken.tar.gz https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz
-  tar -vxzf /tmp/gitkraken.tar.tz 
   
-  mv gitkraken /opt/
-  chmod -R a+rX      /opt/gitkraken
-  chown -R root:root /opt/gitkraken
+  if [ ! -f /tmp/gitkraken.tar.gz ]
+  then
+    wget -O /tmp/gitkraken.tar.gz https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz
+  fi
+  tar -vxzf /tmp/gitkraken.tar.gz 
   
-  rm gitkraken-amd64.tar.gz
+  mv gitkraken /opt/ 
+  rm /tmp/gitkraken.tar.gz
 fi 
 
 cp -u ./resources/gitkraken.png     /opt/gitkraken
 cp -u ./resources/gitkraken.desktop /usr/share/applications
 chmod 644 /usr/share/applications/*.desktop
 
+chmod -R a+rX      /opt/gitkraken
+chown -R root:root /opt/gitkraken
+
 # libcurl-gnutls.so.4: cannot open shared object file: No such file or directory
 # Error: libcurl-gnutls.so.4: cannot open shared object file: No such file or directory
-ln -s /usr/lib64/libcurl.so.4 /opt/gitkraken/libcurl-gnutls.so.4 >/dev/null 2>&1
+ln -s /usr/lib64/libcurl.so.4 /usr/lib64/libcurl-gnutls.so.4 >/dev/null 2>&1
