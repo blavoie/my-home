@@ -1,0 +1,11 @@
+#!/bin/bash
+docker create --name gitkraken \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e DISPLAY=$DISPLAY \
+    -v $HOME:/opt/gitkraken/data \
+    -v $HOME/.gitkraken:/opt/gitkraken/config \
+    -e USER_ID=$(id -u) \
+    -e GROUP_ID=$(id -g) \
+    --privileged \
+    -v=/dev/dri:/dev/dri:rw \
+    local/gitkraken   
