@@ -82,6 +82,26 @@ EOF
 # Container Aliases
 #
 
+gitkraken() {
+        del_stopped gitkraken
+
+	docker create --name gitkraken \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY=$DISPLAY \
+		-v $HOME:/opt/gitkraken/data \
+		-v $HOME/.gitkraken:/opt/gitkraken/config \
+		-v $HOME/.ssh:/opt/gitkraken/ssh \
+		-v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
+		-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+		-e USER_ID=$(id -u) \
+		-e GROUP_ID=$(id -g) \
+		--privileged \
+		-v=/dev/dri:/dev/dri:rw \
+		local/gitkraken   
+
+        docker start gitkraken                
+}
+
 openconnect() {
 	del_stopped openconnect
 
