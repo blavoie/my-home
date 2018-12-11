@@ -1,0 +1,25 @@
+#
+# How to install:
+#   - you must copy your public key to the account
+#   - copy this file to /usr/lib/systemd/system/autossh-home-tunnel.service
+#   - systemctl daemon-reload
+#   - systemctl start autossh-home-tunnel.service
+#   - systemctl enable autossh-home-tunnel.service
+#
+# TODO: 
+#   - do not run as root, but as a dedicated username
+# 
+# Credits to: https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/
+#
+[Unit]
+Description=AutoSSH tunnel service everythingcli MySQL on local port 5000
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+#ExecStart=/usr/bin/autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -NL 5000:localhost:3306 cytopia@everythingcli.org -p 1022
+ExecStart=/usr/bin/autossh -M 0 -N -T home.brunol.com
+
+[Install]
+WantedBy=multi-user.target
+

@@ -148,3 +148,7 @@ fi
 
 PATH=$PATH:/home/bl/cluster-hadoop
 export PATH
+
+### Atom workaround
+# https://github.com/atom/atom/issues/17452
+ELECTRON_TRASH=gio
