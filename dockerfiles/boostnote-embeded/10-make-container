@@ -1,9 +1,10 @@
 #!/bin/bash
 
-docker create --name boostnote \
+docker create \
+	--name boostnote \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e DISPLAY=$DISPLAY \
-    -v $HOME:/boostnote-data \
+    -v $HOME:/home/boostnote \
     -e USER_ID=$(id -u) \
     -e GROUP_ID=$(id -g) \
     --privileged \
