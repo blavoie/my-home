@@ -7,3 +7,6 @@ crc32
 goland
 idea
 webstorm
+kubectl
+docker-machine-driver-kvm2
+minikube
