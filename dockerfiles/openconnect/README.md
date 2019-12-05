@@ -1,6 +1,6 @@
 # openconnect
 
-This image is used to connect to Cisco AnyConnect VPN protocol in an isolated way. 
+This image is used to connect to Cisco AnyConnect VPN protocol in an isolated way.
 
 It may be useful in case you don't want openconnect to modify your host routes.
 
@@ -20,10 +20,16 @@ docker build -t blavoie/openconnect .
 ### Start the image
 
 ```
-docker run --rm -it -p 1080:1080 -v /tmp/.X11-unix:/tmp/.X11-unix --privileged -e DISPLAY blavoie/openconnect /bin/bash
+docker run --rm -it \
+       -p 1080:1080 \
+       -p 10022:22 \
+       --privileged \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       -e DISPLAY blavoie/openconnect \
+       /bin/bash
 ```
 
-or simply call the defined function in ~/.dockerfunc
+or simply call and see the defined function in ~/.dockerfunc for more complete example
 
 ```
 openconnect
@@ -64,3 +70,10 @@ Or simply forward ports and use a socks proxy:
 ```
 ssh -D 0.0.0.0:1080 -C -f -N user@server -p 10022
 ```
+
+You can also start SSHD, connect to it, and use socks from host:
+
+```
+/usr/sbin/sshd -D -p 22
+```
+
