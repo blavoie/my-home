@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+OS_VERSION=1.33.0
+
+### MINISHIFT
+# To get latest version: https://github.com/minishift/minishift/releases/latest
+
+wget -O /tmp/minishift.tgz https://github.com/minishift/minishift/releases/download/v${OS_VERSION}/minishift-${OS_VERSION}-linux-amd64.tgz
+cd /tmp/
+tar -xzf minishift.tgz
+cp ./minishift-*/minishift ~/bin/
+rm -rf /tmp/minishift*
+
+### DOCKER MACHINE DRIVER KVM2
+
+curl -Lo ~/bin/docker-machine-driver-kvm https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-centos7
+chmod +x ~/bin/docker-machine-driver-kvm

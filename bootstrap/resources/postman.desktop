@@ -2,8 +2,8 @@
 Comment=Postman
 Terminal=false
 Name=Postman
-Exec=/opt/Postman/Postman
+Exec=/opt/postman/Postman
 Type=Application
-Icon=/opt/Postman/resources/app/assets/icon.png
+Icon=/opt/postman/app/resources/app/assets/icon.png
 Categories=Development;IDE;
 GenericName=Postman

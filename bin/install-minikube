@@ -14,7 +14,7 @@ chmod +x ~/bin/minikube
 KUBECTL_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 
 curl -Lo ~/bin/kubectl \
-  https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION$/bin/linux/amd64/kubectl
+  https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl
   chmod +x ~/bin/kubectl
 
 ### DOCKER MACHINE DRIVER KVM2
@@ -22,3 +22,12 @@ curl -Lo ~/bin/kubectl \
 curl -Lo ~/bin/docker-machine-driver-kvm2 https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 
 chmod +x ~/bin/docker-machine-driver-kvm2
 
+### INSTALL BASH COMPLETION SCRIPTS, THEN SOURCE
+
+mkdir -p ~/bin/bash_completion.d/
+
+minikube completion bash > ~/bin/bash_completion.d/minikube
+kubectl  completion bash > ~/bin/bash_completion.d/kubectl
+
+source ~/bin/bash_completion.d/minikube
+source ~/bin/bash_completion.d/kubectl

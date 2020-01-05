@@ -12,15 +12,15 @@ fi
 
 # Install if not already done
 
-if [ ! -d ${INSTALL_BASE}/Postman ]
+if [ ! -d ${INSTALL_BASE}/postman ]
 then
 
     wget -O /tmp/postman.tar.gz $POSTMAN_URL
     tar -vxzf /tmp/postman.tar.gz
 
     mv Postman ${INSTALL_BASE}
-    chown -R root:root /opt/Postman
-    chmod -R  a+rX /opt/Postman
+    chown -R root:root /opt/postman
+    chmod -R  a+rX /opt/postman
 
     rm /tmp/postman.tar.gz
 fi
@@ -28,6 +28,6 @@ fi
 
 # Install Launcher
 
-cp -u ./resources/postman.desktop /usr/share/applications
+cp -u ./resources/postman.desktop /usr/share/applications/
 chmod 644 /usr/share/applications/*.desktop
 
