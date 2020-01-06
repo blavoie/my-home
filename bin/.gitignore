@@ -10,3 +10,8 @@ webstorm
 kubectl
 docker-machine-driver-kvm2
 minikube
+minishift
+oc
+terraform
+consul
+vault
