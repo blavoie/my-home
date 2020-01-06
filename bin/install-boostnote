@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+URL=$( curl -s https://api.github.com/repos/BoostIO/BoostNote.next/releases/latest | jq -r '.assets[] | select(.name | endswith("AppImage")) | .browser_download_url' )
+wget -O ~/bin/boostnote $URL
+chmod +x ~/bin/boostnote
