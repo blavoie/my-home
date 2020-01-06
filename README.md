@@ -2,49 +2,54 @@
 
 Various stuff about my home directory : dotfiles, script, functions, aliases, public keys, etc.
 
-# Installation Process 
+# Installation Process
 
-## Checkout somewhere
+## Set destination
 
 ```
-mkdir -p ~/dev
-cd ~/dev
-git clone git@github.com:blavoie/my-home.git
+export HOMEDIR=~/dev/perso/my-home/
+```
+
+## Checkout
+
+```
+mkdir -p ~/dev/perso/
+git clone git@github.com:${HOMEDIR}
 ```
 
 ## Backup current files and install
 
 ```
 mv ~/bin ~/bin.bak
-ln -s dev/my-home/bin/ bin
+ln -s ${HOMEDIR}/bin/ ~/bin
 
 mv ~/.ssh/config ~/.ssh/config.bak
-ln -s ~/dev/my-home/ssh/config ~/.ssh/config
-chmod -R go-rwx ~/dev/my-home
+ln -s ${HOMEDIR}/ssh/config ~/.ssh/config
+chmod -R go-rwx ${HOMEDIR}
 
 mv ~/.bashrc ~/.bashrc.bak
-ln -s ~/dev/my-home/dotfiles/.bashrc ~/.bashrc
+ln -sf ${HOMEDIR}/dotfiles/.bashrc ~/.bashrc
 
 mv ~/.bash_profile ~/.bash_profile.bak
-ln -s ~/dev/my-home/dotfiles/.bash_profile ~/.bash_profile
+ln -sf ${HOMEDIR}/dotfiles/.bash_profile ~/.bash_profile
 
 mv ~/.nanorc ~/.nanorc.bak
-ln -s ~/dev/my-home/dotfiles/.nanorc ~/.nanorc
+ln -sf ${HOMEDIR}/dotfiles/.nanorc ~/.nanorc
 
 mv ~/.vimrc ~/.vimrc.bak
-ln -s ~/dev/my-home/dotfiles/.vimrc ~/.vimrc
+ln -sf ${HOMEDIR}/dotfiles/.vimrc ~/.vimrc
 
 mv ~/.tmux.conf ~/.tmux.conf.bak
-ln -s ~/dev/my-home/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ${HOMEDIR}/dotfiles/.tmux.conf ~/.tmux.conf
 
 mv ~/.functions ~/.functions.bak
-ln -s ~/dev/my-home/dotfiles/.functions ~/.functions
+ln -sf ${HOMEDIR}/dotfiles/.functions ~/.functions
 
 mv ~/.dockerfunctions ~/.dockerfunctions.bak
-ln -s ~/dev/my-home/dotfiles/.dockerfunctions ~/.dockerfunctions
+ln -sf ${HOMEDIR}/dotfiles/.dockerfunctions ~/.dockerfunctions
 
 mv ~/.tools ~/.tools
-ln -s ~/dev/my-home/dotfiles/.tools ~/.tools
+ln -sf ${HOMEDIR}/dotfiles/.tools ~/.tools
 ```
 
 # Other nice projects that can inspire
@@ -57,4 +62,3 @@ Or, simply search on github with following keywords: home, bin, dotfiles.
 # TODO
 
 - Create scripts to automate installation by desired parts.
-
