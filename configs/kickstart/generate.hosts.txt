@@ -1,1 +1,4 @@
 vm01.vms.brunol.com,192.168.100.110
+vm02.vms.brunol.com,192.168.100.111
+vm03.vms.brunol.com,192.168.100.112
+vm04.vms.brunol.com,192.168.100.113

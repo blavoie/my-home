@@ -1,9 +1,12 @@
+###########################
+## List variants
+###########################
+
+osinfo-query os
 
 ###########################
 ## Install kickstart
 ###########################
-
-cd /home/bl/my-home/configs/kickstart/
 
 . env-proxy
 
@@ -58,7 +61,7 @@ ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/ki
 # Option 1:
 #   - location over network
 #   - remote kickstart
-    
+
     --location http://centos.mirror.iweb.ca/7/os/x86_64/ \
     --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
 
@@ -78,22 +81,12 @@ ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/ki
 
 
     --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
-    --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"    
-    
+    --extra-args "ks=https://raw.githubusercontent.com/blavoie/my-home/master/configs/kickstart/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
+
 # Option 4:
 #    - location with local ISO (requires root)
-#    - local kickstart 
+#    - local kickstart
 
     --location /var/lib/libvirt/iso/CentOS-7-x86_64-Minimal-1611.iso \
     --initrd-inject ./kickstart-anaconda-example.cfg \
     --extra-args "ks=file:/kickstart-anaconda-example.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
-
- 
-  
-###########################  
-## List variants
-###########################
-
-osinfo-query os 
-
-
