@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-sudo systemctl start  plexmediaserver.service
-sudo systemctl status plexmediaserver.service

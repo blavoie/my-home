@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-sudo systemctl stop   plexmediaserver.service
-sudo systemctl status plexmediaserver.service

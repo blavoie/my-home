@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# Useful for quickly start sqldeveloper when using remote-X11 display.
-~/app/sqldeveloper/sqldeveloper.sh >/dev/null 2>&1 & 
