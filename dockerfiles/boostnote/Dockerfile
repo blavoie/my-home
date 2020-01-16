@@ -16,7 +16,7 @@ RUN apt-get update \
                        libnotify4 \
                        libxss1 \
                        libasound2 \
- && wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.11/boostnote_0.11.11_amd64.deb -O boostnote.deb \
+ && wget https://github.com/BoostIO/boost-releases/releases/download/v0.11.15/boostnote_0.11.15_amd64.deb -O boostnote.deb \
  && dpkg -i boostnote.deb \
  && rm -rf *.deb \
  && rm -rf /var/lib/apt/lists/* 

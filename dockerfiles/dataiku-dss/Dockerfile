@@ -50,13 +50,13 @@ RUN yum install -y wget \
 #### Install Conda
 ##############################
 
-
+# TODO
 
 ##############################
 #### Install Dataiku
 ##############################
 
-ENV DATAIKU_VERSION=4.3.3 \
+ENV DATAIKU_VERSION=5.1.5 \
     DATAIKU_DIR=/app/dataiku
 
 RUN yum install -y git \
@@ -79,7 +79,7 @@ RUN useradd dataiku \
   
 USER dataiku
 
-RUN wget --progress=bar:force -O /tmp/dataiku-dss.tar.gz http://repo-svd.svc.ulaval.ca/pkgs/dataiku/dataiku-dss-${DATAIKU_VERSION}.tar.gz 
+RUN wget --progress=bar:force -O /tmp/dataiku-dss.tar.gz https://cdn.downloads.dataiku.com/public/dss/${DATAIKU_VERSION}/dataiku-dss-${DATAIKU_VERSION}.tar.gz
 RUN tar -vxzf /tmp/dataiku-dss.tar.gz -C /app/dataiku 
 
 RUN cd /app/dataiku/dataiku-dss-${DATAIKU_VERSION} \ 
@@ -97,10 +97,5 @@ RUN rm -rf /tmp/* \
 ##############################
 
 USER dataiku
-
-# TODO
-
 EXPOSE 11000
-
-
 
