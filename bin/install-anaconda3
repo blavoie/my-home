@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]
+then 
+  echo "Please run as root or use sudo."
+  exit
+fi
+
+export ANACONDA3_HOME=/opt/anaconda3
+export ANACONDA3_VERSION=2020.02
+
+###################################
+### Flush and reinstall distribution
+###################################
+
+mkdir -p /opt/
+wget -nc https://repo.anaconda.com/archive/Anaconda3-${ANACONDA3_VERSION}-Linux-x86_64.sh -O /tmp/anaconda3.sh
+rm -rf ${ANACONDA3_HOME}
+bash /tmp/anaconda3.sh -b -p ${ANACONDA3_HOME}
+
+# fixup
+chmod -R a+rX,go-w ${ANACONDA3_HOME}
+
+###################################
+### Install easy anaconda usage
+###################################
+
+cat << EOT > /usr/local/bin/env-anaconda3.sh
+#!/usr/bin/env bash
+ANACONDA3_HOME=${ANACONDA3_HOME}
+export ANACONDA3_HOME
+ 
+PATH=$ANACONDA3_HOME/bin/:$PATH
+export PATH
+EOT
+  
+chmod a+rx /usr/local/bin/env-anaconda3.sh
+  
+cat << EOT > /etc/profile.d/anaconda3.sh
+alias env-anaconda3='source /usr/local/bin/env-anaconda3.sh'
+EOT
+
+chmod a+r /etc/profile.d/anaconda3.sh 
+
+###################################
+### Create desktop entries
+###################################
+
+cat << EOT > /usr/share/applications/anaconda3-anaconda-navigator.desktop
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Anaconda Navigator - Anaconda 3
+Exec=sh -c "source /usr/local/bin/env-anaconda3.sh && anaconda-navigator"
+Type=Application
+Categories=Development;IDE;
+Name=Anaconda Navigator - Anaconda 3
+EOT
+
+chmod 644 /usr/share/applications/anaconda3-anaconda-navigator.desktop
+
+cat << EOT > /usr/share/applications/anaconda3-ipython-qtconsole.desktop
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=iPython QT Console - Anaconda 3
+Exec=sh -c "source /usr/local/bin/env-anaconda3.sh && jupyter qtconsole"
+Type=Application
+Categories=Development;IDE;
+Name=iPython QT Console - Anaconda 3
+EOT
+
+chmod 644 /usr/share/applications/anaconda3-ipython-qtconsole.desktop
+
+###################################
+### Update to latest
+###################################
+
+source /usr/local/bin/env-anaconda3.sh
+
+conda update conda -y
+conda update anaconda -y
+conda clean --all -y
+
+# fixup
+chmod -R a+rX,go-w ${ANACONDA3_HOME}
+
+###################################
+### Message and cleanup
+###################################
+
+echo "For immediate usage, run: source /etc/profile.d/anaconda3.sh"
+echo "Then execute env-anaconda3 to use it."
+
+#rm -rf /tmp/anaconda3.sh

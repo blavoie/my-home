@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=
-Terminal=false
-Name=Anaconda Navigator - Anaconda 3
-Exec=sh -c "source /usr/local/bin/env-anaconda3.sh && anaconda-navigator"
-Type=Application
-#Icon=/usr/lib/python2.7/site-packages/IPython/qt/console/resources/icon/IPythonConsole.svg
-Categories=Development;IDE;
-Name[en_CA.utf8]=Anaconda Navigator - Anaconda 3

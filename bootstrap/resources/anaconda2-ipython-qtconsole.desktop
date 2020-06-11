@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=
-Terminal=false
-Name=iPython QT Console - Anaconda 2
-Exec=sh -c "source /usr/local/bin/env-anaconda2.sh && jupyter qtconsole"
-Type=Application
-Icon=/usr/lib/python2.7/site-packages/IPython/qt/console/resources/icon/IPythonConsole.svg
-Categories=Development;IDE;
-Name[en_CA.utf8]=iPython QT Console - Anaconda 2

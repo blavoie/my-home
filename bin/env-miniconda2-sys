@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-ANACONDA_HOME=/opt/miniconda2
-export ANACONDA_HOME
-
-PATH=$ANACONDA_HOME/bin:$PATH
-export PATH

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]
+then 
+  echo "Please run as root or use sudo."
+  exit
+fi
+
+export MINICONDA3_HOME=/opt/miniconda3
+
+###################################
+### Flush and reinstall distribution
+###################################
+
+mkdir -p /opt/
+wget -nc https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda3.sh
+rm -rf ${MINICONDA3_HOME}
+bash /tmp/miniconda3.sh -b -p ${MINICONDA3_HOME}
+
+# fixup
+chmod -R a+rX,go-w ${MINICONDA3_HOME}
+
+###################################
+### Install easy miniconda usage
+###################################
+
+cat << EOT > /usr/local/bin/env-miniconda3.sh
+#!/usr/bin/env bash
+MINICONDA3_HOME=${MINICONDA3_HOME}
+export MINICONDA3_HOME
+ 
+PATH=\$MINICONDA3_HOME/bin/:$PATH
+export PATH
+EOT
+  
+chmod a+rx /usr/local/bin/env-miniconda3.sh
+  
+cat << EOT > /etc/profile.d/miniconda3.sh
+alias env-miniconda3='source /usr/local/bin/env-miniconda3.sh'
+EOT
+
+chmod a+r /etc/profile.d/miniconda3.sh 
+
+###################################
+### Update to latest
+###################################
+
+source /usr/local/bin/env-miniconda3.sh
+
+conda update conda -y
+conda update --all -y
+conda clean --all -y
+
+# fixup
+chmod -R a+rX,go-w ${MINICONDA3_HOME}
+
+###################################
+### Message and cleanup
+###################################
+
+echo "For immediate usage, run: source /etc/profile.d/miniconda3.sh"
+echo "Then execute env-miniconda3 to use it."
+
+#rm -rf /tmp/miniconda3.sh
