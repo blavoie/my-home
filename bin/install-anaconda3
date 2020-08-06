@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
 if [ "$EUID" -ne 0 ]
-then 
+then
   echo "Please run as root or use sudo."
   exit
 fi
 
 export ANACONDA3_HOME=/opt/anaconda3
 export ANACONDA3_VERSION=2020.02
+
+###################################
+### Install requirements
+###################################
+
+dnf install -y libXcomposite libXcursor libXi libXtst libXrandr alsa-lib mesa-libEGL libXdamage mesa-libGL libXScrnSaver
 
 ###################################
 ### Flush and reinstall distribution
@@ -29,18 +35,18 @@ cat << EOT > /usr/local/bin/env-anaconda3.sh
 #!/usr/bin/env bash
 ANACONDA3_HOME=${ANACONDA3_HOME}
 export ANACONDA3_HOME
- 
+
 PATH=$ANACONDA3_HOME/bin/:$PATH
 export PATH
 EOT
-  
+
 chmod a+rx /usr/local/bin/env-anaconda3.sh
-  
+
 cat << EOT > /etc/profile.d/anaconda3.sh
 alias env-anaconda3='source /usr/local/bin/env-anaconda3.sh'
 EOT
 
-chmod a+r /etc/profile.d/anaconda3.sh 
+chmod a+r /etc/profile.d/anaconda3.sh
 
 ###################################
 ### Create desktop entries

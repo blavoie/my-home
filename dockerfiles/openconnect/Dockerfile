@@ -13,7 +13,11 @@ RUN dnf install -y openconnect \
                    openssh-server \
                    passwd \
                    net-tools \
-                   nc 
+                   nc \
+                   tcpdump \
+                   bind-utils \
+                   iptraf-ng \
+                   nmon
 
 ### SETUP
 
@@ -29,6 +33,8 @@ RUN ssh-keygen -A \
  && dnf clean all
 
 ADD README.md /
+ADD init.sh /
+ADD env /
 
 CMD ["/bin/bash"]
 

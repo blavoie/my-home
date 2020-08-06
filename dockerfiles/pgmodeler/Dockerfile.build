@@ -1,0 +1,24 @@
+FROM fedora:29
+
+RUN dnf update -y
+RUN dnf install -y qt5-devel \
+                   postgresql-devel \
+                   libxml2-devel \
+                   make \
+                   git \
+
+ENV PGMODELER_ROOT=/opt/pgmodeler
+
+RUN git clone https://github.com/pgmodeler/pgmodeler.git \
+ && cd pgmodeler \
+ && git checkout master
+
+RUN mkdir -p $PGMODELER_ROOT \
+ && qmake-qt5 -r PREFIX=$PGMODELER_ROOT \
+                 BINDIR=$PGMODELER_ROOT \
+                 PRIVATEBINDIR=$PGMODELER_ROOT \
+                 PRIVATELIBDIR=$PGMODELER_ROOT/lib \
+                 pgmodeler.pro \
+ && make install
+
+RUN dnf clean all

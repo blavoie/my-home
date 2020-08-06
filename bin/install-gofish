@@ -6,4 +6,4 @@ then
   exit
 fi
 
-dnf install -y https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm
+curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash

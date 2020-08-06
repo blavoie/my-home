@@ -52,6 +52,22 @@ alias git-pull-all="find . -mindepth 1 -maxdepth 1 -type d -exec git --git-dir={
 
 alias swapped-processes='for file in /proc/*/status ; do awk '"'"'/VmSwap|Name/{printf $2 " " $3}END{ print ""}'"'"' $file; done | sort -k 2 -n -r | less'
 
+# Kubernetes
+
+if hash kubectl 2>/dev/null
+then
+
+    source <(kubectl completion bash)
+    alias k=kubectl
+    complete -F __start_kubectl k
+
+    alias ka="kubectl apply -f"
+    alias kd="kubectl delete -f"
+
+    export KUBECONFIG=.kubeconfig:~/.kube/config
+
+fi
+
 ### Powerline
 
 if command -v powerline-daemon > /dev/null; then

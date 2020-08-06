@@ -77,3 +77,20 @@ You can also start SSHD, connect to it, and use socks from host:
 /usr/sbin/sshd -D -p 22
 ```
 
+### Outsite the container
+
+Once sshd and tunnels are up in the container, we can establis an ssh connection with forwarding:
+
+```
+ssh ssh@localhost -p 10022 -D 1090
+```
+
+### Redirect DNS traffic to corporate internal resolvers (split-dns)
+
+```
+sshuttle \
+     --dns \
+     --to-ns=10.141.1.10 \
+     -r ssh@localhost:10022\
+     0/0
+```

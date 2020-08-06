@@ -62,33 +62,33 @@ export JAVA_HOME
 
 ### JetBrains PyCharm JDK
 
-PYCHARM_JDK=/opt/jdk8
-export PYCHARM_JDK
+#PYCHARM_JDK=/opt/jdk8
+#export PYCHARM_JDK
 
 ### JetBrains IntelliJ IDEA JDK
 
-IDEA_JDK=/opt/jdk8
-export IDEA_JDK
+#IDEA_JDK=/opt/jdk8
+#export IDEA_JDK
 
 ### JetBrains CLion JDK
 
-CL_JDK=/opt/jdk8
-export CL_JDK
+#CL_JDK=/opt/jdk8
+#export CL_JDK
 
 ### JetBrains WebStorm JDK
 
-WEBIDE_JDK=/opt/jdk8
-export WEBIDE_JDK
+#WEBIDE_JDK=/opt/jdk8
+#export WEBIDE_JDK
 
 ### JetBrains RubyMine JDK
 
-RUBYMINE_JDK=/opt/jdk8
-export RUBYMINE_JDK
+#RUBYMINE_JDK=/opt/jdk8
+#export RUBYMINE_JDK
 
 ### JetBrains DataGrip JDK
 
-DATAGRIP_JDK=/opt/jdk8
-export DATAGRIP_JDK
+#DATAGRIP_JDK=/opt/jdk8
+#export DATAGRIP_JDK
 
 ### Gradle
 
@@ -146,9 +146,25 @@ fi
 
 ### Outils d'administration du Cluster Hadoop
 
-PATH=$PATH:/home/bl/cluster-hadoop
-export PATH
+#PATH=$PATH:/home/bl/cluster-hadoop
+#export PATH
 
 ### Atom workaround
 # https://github.com/atom/atom/issues/17452
-ELECTRON_TRASH=gio
+#ELECTRON_TRASH=gio
+
+### Autocomplete for oc and kubectl commands
+
+if [ -d "$HOME/bin/bash_completion.d"  ]; then
+  for f in ~/bin/bash_completion.d/*; do
+    source $f
+  done
+fi
+
+#if hash kubectl 2>/dev/null; then
+#fi
+
+### Set the Python's Interactive Startup File
+
+export PYTHONSTARTUP=~/.pythonrc.py
+

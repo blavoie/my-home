@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 if [ "$EUID" -ne 0 ]
-then 
+then
   echo "Please run as root or use sudo."
   exit
 fi
+
+export ANACONDA3_HOME=/opt/anaconda3
 
 source /usr/local/bin/env-anaconda3.sh
 

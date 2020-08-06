@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 if [ "$EUID" -ne 0 ]
-then 
+then
   echo "Please run as root or use sudo."
   exit
 fi
+
+export MINICONDA3_HOME=/opt/miniconda3
 
 source /usr/local/bin/env-miniconda3.sh
 
