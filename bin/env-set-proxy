@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/echo "Please source this file"
+
 export PROXY=http://localhost:3128
 
 export HTTP_PROXY=$PROXY
