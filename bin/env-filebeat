@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-FILEBEAT_HOME=~/app/filebeat
-export FILEBEAT_HOME
-
-PATH=$FILEBEAT_HOME:$PATH
-export PATH

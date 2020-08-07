@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-ELASTICSEARCH_HOME=~/app/elasticsearch
-export ELASTICSEARCH_HOME
-
-PATH=$ELASTICSEARCH_HOME/bin:$PATH
-export PATH

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-SPARK_CONF_DIR=~/dev/my-home/configs/spark/local
-export SPARK_CONF_DIR
-
