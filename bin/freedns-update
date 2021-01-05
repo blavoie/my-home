@@ -37,3 +37,16 @@ PUB_IP=$(/usr/bin/dig +short myip.opendns.com @resolver1.opendns.com)
 echo "Got public IP: $PUB_IP"
 
 /usr/bin/curl -s "http://freedns.afraid.org/dynamic/update.php?$FREEDNS_PUB_ID&address=$PUB_IP" &
+
+#################
+# VPN0 ROAMING
+#################
+
+VPN0_IP=$( ip addr show dev vpn0 | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" 2>/dev/null )
+
+if [[ $? -eq 0 ]]; then
+  echo "Got vpn0 IP: $VPN0_IP"
+  /usr/bin/curl -s "http://freedns.afraid.org/dynamic/update.php?$FREEDNS_VPN0_ID&address=$VPN0_IP" &
+else
+  echo "Could not get vpn0 IP, not refreshing."
+fi
