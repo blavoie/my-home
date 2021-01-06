@@ -61,10 +61,21 @@ then
     alias k=kubectl
     complete -F __start_kubectl k
 
-    alias ka="kubectl apply -f"
-    alias kd="kubectl delete -f"
+    alias ka="kubectl apply "
+    alias kd="kubectl delete "
+    alias kdr='kubectl --dry-run=client -o yaml'
+    alias kbb='kubectl run busybox-test --image=busybox -it --rm --restart=Never --'
+    alias kdb='kubectl describe'
+    alias kl='kubectl logs'
+    alias ke='kubectl exec -it'
+
+    # Automatically decode a secret
+    #k get secret my-secret -o go-template --template="{{.data.secretValue|base64decode}}"
 
     export KUBECONFIG=.kubeconfig:~/.kube/config
+
+    # k explain pod.spec.containers.resources.requests
+    # k explain pod.spec.containers.resources.limits
 
 fi
 
