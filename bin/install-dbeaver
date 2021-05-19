@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-if [ "$EUID" -ne 0 ]
-then
-  echo "Please run as root or use sudo."
-  exit
-fi
-
-dnf install -y https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm
